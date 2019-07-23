@@ -68,43 +68,42 @@ class _SetupScreenState extends State<SetupScreen> {
               SizedBox(
                 height: 20,
               ),
-              InkWell(
-                onTap: () {
-                  Socket.connect('192.168.0.1', 4567).then((socket) {
+              Container(
+                height: 44,
+                width: 120,
+                child: FlatButton(
+                  color: Colors.blue,
+                  onPressed: () {
+                    Socket.connect('192.168.4.1', 4567).then((socket) {
                     print('Connected to: '
                       '${socket.remoteAddress.address}:${socket.remotePort}');
                     socket.listen((List<int> event) {
-                      String message = new String.fromCharCodes(event).trim();
-                      print('Received: $message');
-                    },
-                    onError: (error) {
-                      print(error);
-                    },
-                    onDone: () {
-                      print('done');
+                        String message = new String.fromCharCodes(event).trim();
+                        print('Received: $message');
+                      },
+                      onError: (error) {
+                        print(error);
+                      },
+                      onDone: () {
+                        print('done');
+                      });
+
+                      Map<String, String> data = new Map();
+                      data['SSID'] = txtSSID;
+                      data['WPA'] = txtWPA;
+
+                      socket.write(jsonEncode(data));
                     });
-
-                    Map<String, String> data = new Map();
-                    data['SSID'] = txtSSID;
-                    data['WPA'] = txtWPA;
-
-                    socket.write(jsonEncode(data));
-                  });
-                },
-                child: Container(
-                  width: 100,
-                  height: 44,
-                  color: Colors.blue,
-                  child: Center(
-                    child: Text(
-                      'SEND',
-                      style: TextStyle(
-                        color: Colors.white
-                      ),
+                  },
+                  child: Text(
+                    'SEND',
+                    style: TextStyle(
+                      color: Colors.white
                     ),
                   ),
-                ), 
+                ),
               ),
+              
             ],
           ),
         ),
