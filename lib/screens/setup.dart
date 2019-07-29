@@ -91,6 +91,7 @@ class _SetupScreenState extends State<SetupScreen> {
                       Map<String, String> data = new Map();
                       data['SSID'] = txtSSID;
                       data['WPA'] = txtWPA;
+                      data['ID'] = '1';
 
                       socket.write(jsonEncode(data));
                     });
