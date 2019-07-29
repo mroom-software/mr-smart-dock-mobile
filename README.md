@@ -18,11 +18,11 @@ Comming soon on both Android and iOS
 
 #### Setup screens
 
-<img src="screenshots/s1.png" height="405em" /> <img src="screenshots/s2.png" height="405em" /> <img src="screenshots/s3.png" height="405em" /> <img src="screenshots/s4.png" height="405em" />
+<img src="screenshots/Setup/Setup 1.png" height="405em" /> <img src="screenshots/Setup/Setup 2.png" height="405em" /> <img src="screenshots/Setup/Setup 3.png" height="405em" /> <img src="screenshots/Setup/Setup 4.png" height="405em" />
 
 #### Profile screens
 
-<img src="screenshots/s1.png" height="405em" /> <img src="screenshots/s2.png" height="405em" /> <img src="screenshots/s3.png" height="405em" /> <img src="screenshots/s4.png" height="405em" />
+<img src="screenshots/Profile/Profile 1.png" height="405em" /> <img src="screenshots/Profile/Profile 2.png" height="405em" /> <img src="screenshots/Profile/Profile 3.png" height="405em" /> <img src="screenshots/Profile/Profile 4.png" height="405em" />
 
 ### Created & Maintained By
 
