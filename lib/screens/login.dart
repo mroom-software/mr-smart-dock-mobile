@@ -7,23 +7,40 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: null,
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Expanded(
-              flex: 1,
-              child: Align(
-                child: Image.asset('assets/top.png'),
-                alignment: Alignment.topCenter,
-              ),
+            Image.asset('assets/top.png'),
+            SizedBox(
+              height: 50,
             ),
-            Expanded(
-              flex: 5,
-              child: Align(
-                alignment: Alignment.topCenter,
-                child: Text(
-                  'Sign In'
+            Center(
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                child: Column(
+                  children: <Widget>[
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Sign In',
+                        style: Theme.of(context).textTheme.headline,
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Theme.of(context).accentColor),
+                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                      ),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: 'Email',
+                        ),
+                      ),
+                    ),
+                  ],
+
                 ),
               ),
             ),
