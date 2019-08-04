@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:smart_dock_mobile/widgets/button_icon_widget.dart';
+import 'package:smart_dock_mobile/widgets/button_widget.dart';
 
 class LoginScreen extends StatefulWidget {
 
@@ -47,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.all(Radius.circular(4.0)),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(5),
+                        padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                         child: TextFormField(
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -69,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           Expanded(
                             flex: 8,
                             child: Padding(
-                              padding: const EdgeInsets.all(5),
+                              padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                               child: TextFormField(
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
@@ -96,7 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   child: Text(
                                     'SHOW',
                                     style: TextStyle(
-                                      fontSize: 13.0,
+                                      fontSize: 12.0,
                                       fontWeight: FontWeight.w500,
                                       color: Color(0xFF003BFF),
                                     ),
@@ -109,6 +111,32 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                     ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    ButtonWidget(
+
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Container(
+                      child: Text(
+                        '_____OR_____',
+                        style: TextStyle(
+                          fontSize: 13.0,
+                          color: Theme.of(context).accentColor,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+
+                    ButtonIconWidget(
+
+                    ),
+
                   ],
 
                 ),
