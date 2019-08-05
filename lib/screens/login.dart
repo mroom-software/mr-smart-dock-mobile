@@ -136,7 +136,36 @@ class _LoginScreenState extends State<LoginScreen> {
                     ButtonIconWidget(
 
                     ),
-
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        Expanded(
+                          flex: 3,
+                          child: Text(
+                            'FORGOT DETAIL?',
+                            style: Theme.of(context).textTheme.display1,
+                          ),
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: Container(),
+                        ),
+                        Expanded(
+                          flex: 3,
+                          child: Align(
+                            alignment: Alignment.centerRight, 
+                            child: Text(
+                              'CREATE ACCOUNT',
+                              style: Theme.of(context).textTheme.display1,
+                            ),
+                          ),
+                        ),
+                        
+                      ],
+                    ),
                   ],
 
                 ),

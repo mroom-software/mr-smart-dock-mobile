@@ -19,7 +19,8 @@ class Routes extends StatelessWidget {
           body1: TextStyle(fontSize: 15.0, fontStyle: FontStyle.normal,),
           title: TextStyle(fontSize: 18.0, fontStyle: FontStyle.normal,),
           subtitle: TextStyle(fontSize: 13.0, fontStyle: FontStyle.normal,),
-          button: TextStyle(fontSize: 16.0, fontStyle: FontStyle.normal, color: Theme.of(context).buttonColor),
+          display1: TextStyle(fontSize: 13.0, fontStyle: FontStyle.normal, color: Color(0xFF515151)),
+          button: TextStyle(fontSize: 16.0, fontStyle: FontStyle.normal, color: Colors.white),
         ),
       ),
       routes: {
