@@ -11,8 +11,11 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
 
+  bool _isShowPwd;
+
   @override
   void initState() {
+    _isShowPwd = false;
     super.initState();
   }
 
@@ -69,6 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                             child: TextFormField(
+                              obscureText: (_isShowPwd) ? false : true,
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 hintText: 'Your Password',
@@ -89,7 +93,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Center(
                               child: InkWell(
                                 onTap: () {
-                                  
+                                  setState(() {
+                                    _isShowPwd = !_isShowPwd;
+                                  });
                                 },
                                 child: Text(
                                   'SHOW',
@@ -130,7 +136,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
 
                   ButtonIconWidget(
-
+                    onPressed: () => print('1'),
+                    title: 'LOGIN WITH GMAIL',
                   ),
                   SizedBox(
                     height: 30,
