@@ -18,6 +18,7 @@ before_script:
   - ./flutter/bin/flutter doctor
 script:
   - ./flutter/bin/flutter test
+  - ./flutter/bin/flutter test test/login/*.dart
 cache:
   directories:
     - $HOME/.pub-cache

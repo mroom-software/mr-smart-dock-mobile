@@ -1,7 +1,23 @@
 
 import 'package:flutter/material.dart';
+import 'package:smart_dock_mobile/helpers/utils.dart';
 import 'package:smart_dock_mobile/widgets/button_icon_widget.dart';
 import 'package:smart_dock_mobile/widgets/button_widget.dart';
+
+class EmailFieldValidator {
+  static String validate(String value) {
+    if (!Utils.isValidEmail(value) || value.isEmpty) {
+      return 'Email is invalid';
+    }
+    return null;
+  }
+}
+
+class PasswordFieldValidator {
+  static String validate(String value) {
+    return value.isEmpty ? 'Password cannot be empty' : null;
+  }
+}
 
 class LoginScreen extends StatefulWidget {
 
@@ -55,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                         child: TextFormField(
                           key: Key('Email'),
-                          validator: (value) => value.isEmpty ? 'Email cannot be empty!' : null,
+                          validator: EmailFieldValidator.validate,
                           onSaved: (value) => _email = value,
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -80,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                               child: TextFormField(
                                 key: Key('Password'),
-                                validator: (value) => value.isEmpty ? 'Password cannot be empty!' : null,
+                                validator: PasswordFieldValidator.validate,
                                 onSaved: (value) => _password = value,
                                 obscureText: (_isShowPwd) ? false : true,
                                 decoration: InputDecoration(
