@@ -7,9 +7,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:smart_dock_mobile/screens/login.dart';
 
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    
+
+  Widget makeWidgetTestable({Widget child}) {
+    return MaterialApp(
+      home: child,
+    );
+  }
+
+  testWidgets('Login Screen', (WidgetTester tester) async {
+    LoginScreen screen = LoginScreen();
+    await tester.pumpWidget(makeWidgetTestable(child: screen));
   });
 }
