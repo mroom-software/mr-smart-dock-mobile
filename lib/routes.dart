@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:smart_dock_mobile/screens/forgot_pwd.dart';
 import 'package:smart_dock_mobile/screens/login.dart';
+import 'package:smart_dock_mobile/screens/signup.dart';
 
 class Routes extends StatelessWidget {
 
@@ -25,6 +27,8 @@ class Routes extends StatelessWidget {
       ),
       routes: {
         '/': (context) => LoginScreen(),
+        '/signup': (context) => SignUpScreen(),
+        '/forgot_pwd': (context) => ForgotPwdScreen(),
       },
     );
   }
