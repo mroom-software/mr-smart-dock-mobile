@@ -1,4 +1,4 @@
-# smartdock-mobile
+# smartdock-mobile [![Travis CI](https://api.travis-ci.org/mroom-software/smart_dock_mobile.svg?branch=master)](https://travis-ci.org/mroom-software/smart_dock_mobile)
 
 Understand your bodies. Let's reduce dehydration in office worker.
 
