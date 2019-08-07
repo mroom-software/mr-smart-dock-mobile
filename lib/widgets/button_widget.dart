@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
-class ButtonWidget extends StatelessWidget {
+class ButtonWidget extends StatefulWidget {
 
+  final Function onPressed;
+  final String title;
+
+  const ButtonWidget({Key key, this.onPressed, this.title}) : super(key: key);
+
+  @override
+  _ButtonWidgetState createState() => _ButtonWidgetState();
+}
+
+class _ButtonWidgetState extends State<ButtonWidget> {
   @override
   Widget build(BuildContext context) {
     
@@ -24,16 +34,17 @@ class ButtonWidget extends StatelessWidget {
       ),
       child: FlatButton(
         onPressed: () {
-          
+          if(widget.onPressed != null) {
+            widget.onPressed();
+          }
         },
         child: Center(
           child: Text(
-            'LOGIN',
+            widget.title,
             style: Theme.of(context).textTheme.button,
           ),
         ),
       ),
     );
   }
-
 }
