@@ -13,7 +13,7 @@ Comming soon on both Android and iOS
 
 #### Main screens
 
-<img src="screenshots/Activity.png" height="405em" /> <img src="screenshots/Login.png" height="405em" /> <img src="screenshots/Signup.png" height="405em" /> <img src="screenshots/Setting.png" height="405em" />
+<img src="screenshots/Activity.png" height="405em" /> <img src="screenshots/Login.png" height="405em" /> <img src="screenshots/Signup.png" height="405em" /> <img src="screenshots/Setting.png" height="405em" /> <img src="screenshots/ForgotPassword.png" height="405em" />
 
 
 #### Setup screens
