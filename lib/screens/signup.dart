@@ -7,8 +7,17 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: null,
-      body: Container(
-
+      body: Stack(
+        children: <Widget>[
+          Image.asset('assets/top.png'),
+          Center(
+            child: SingleChildScrollView(
+              child: Column(
+                
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
