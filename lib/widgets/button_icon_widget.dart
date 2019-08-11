@@ -5,7 +5,10 @@ class ButtonIconWidget extends StatefulWidget {
   final Function() onPressed;
   final String title;
 
-  const ButtonIconWidget({Key key, this.onPressed, this.title}) : super(key: key);
+  const ButtonIconWidget({
+    Key key, 
+    @required this.onPressed, 
+    @required this.title}) : super(key: key);
 
   @override
   _ButtonIconWidgetState createState() => _ButtonIconWidgetState();

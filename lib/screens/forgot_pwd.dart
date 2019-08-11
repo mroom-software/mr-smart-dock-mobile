@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_dock_mobile/screens/login.dart';
+import 'package:smart_dock_mobile/data/validators/email_validator.dart';
 import 'package:smart_dock_mobile/widgets/button_widget.dart';
 
 class ForgotPwdScreen extends StatefulWidget {
@@ -38,7 +38,7 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
                         style: Theme.of(context).textTheme.headline,
                       ),
                       SizedBox(
-                        height: 10,
+                        height: 15,
                       ),
                       Text(
                         'Enter your email below to receive your password reset intructions',
@@ -46,7 +46,7 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 30,
                       ),
                       Container(
                         decoration: BoxDecoration(
