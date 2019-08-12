@@ -1,6 +1,7 @@
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:smart_dock_mobile/screens/login.dart';
+import 'package:smart_dock_mobile/data/validators/email_validator.dart';
+import 'package:smart_dock_mobile/data/validators/password_validator.dart';
 
 void main() {
   test('test email invalid returns error string', () {

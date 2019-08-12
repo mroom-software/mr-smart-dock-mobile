@@ -1,23 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:smart_dock_mobile/helpers/utils.dart';
+import 'package:smart_dock_mobile/data/validators/email_validator.dart';
+import 'package:smart_dock_mobile/data/validators/password_validator.dart';
 import 'package:smart_dock_mobile/widgets/button_icon_widget.dart';
 import 'package:smart_dock_mobile/widgets/button_widget.dart';
-
-class EmailFieldValidator {
-  static String validate(String value) {
-    if (!Utils.isValidEmail(value) || value.isEmpty) {
-      return 'Email is invalid';
-    }
-    return null;
-  }
-}
-
-class PasswordFieldValidator {
-  static String validate(String value) {
-    return value.isEmpty ? 'Password cannot be empty' : null;
-  }
-}
 
 class LoginScreen extends StatefulWidget {
 
