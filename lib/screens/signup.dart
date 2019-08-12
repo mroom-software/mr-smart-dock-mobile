@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_dock_mobile/data/validators/email_validator.dart';
 import 'package:smart_dock_mobile/data/validators/password_validator.dart';
 import 'package:smart_dock_mobile/widgets/button_widget.dart';
+import 'package:smart_dock_mobile/widgets/combobox_widget.dart';
 
 class SignUpScreen extends StatefulWidget {
 
@@ -71,8 +72,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             border: Border.all(color: Theme.of(context).accentColor),
                             borderRadius: BorderRadius.all(Radius.circular(4.0)),
                           ),
-                          child: Text(
-                            'Gender'
+                          child: ComboboxWidget(
+                            lblContent: 'Gender',
+                            entries: ['Male', 'Female'],
                           ),
                         ),
                       ),
@@ -88,8 +90,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             border: Border.all(color: Theme.of(context).accentColor),
                             borderRadius: BorderRadius.all(Radius.circular(4.0)),
                           ),
-                          child: Text(
-                            'Gender'
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Expanded(
+                                flex: 4,
+                                child: Container(
+                                  
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Icon(
+                                    Icons.arrow_drop_down, 
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
