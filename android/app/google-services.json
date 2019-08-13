@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "933593275519",
+    "firebase_url": "https://smartdock-3c148.firebaseio.com",
+    "project_id": "smartdock-3c148",
+    "storage_bucket": "smartdock-3c148.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:933593275519:android:9f58feedfb8a5c2f",
+        "android_client_info": {
+          "package_name": "com.mroom.smartdock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "933593275519-eg42f1ghntpa85hr5ed5gs5vq63n3ude.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIDoB7BUBe4nVbdHNHJ5Pa6_rQ6m19_co"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "933593275519-eg42f1ghntpa85hr5ed5gs5vq63n3ude.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "933593275519-09c2sk88p2vi90bcmc3rsuc1heaml98p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mroom.smartdock"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
