@@ -82,6 +82,9 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
                           'Back',
                           style: TextStyle (
                             decoration: TextDecoration.underline,
+                            color: Theme.of(context).primaryColor,
+                            fontSize: 13,
+                            fontWeight: FontWeight.bold
                           ),
                         ),
                       ),

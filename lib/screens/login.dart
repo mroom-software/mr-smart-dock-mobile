@@ -137,7 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Container(
                       child: Text(
-                        '_____OR_____',
+                        '_____Or_____',
                         style: TextStyle(
                           fontSize: 13.0,
                           color: Theme.of(context).accentColor,
@@ -163,7 +163,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: InkWell(
                             child: Text(
                               'FORGOT DETAIL?',
-                              style: Theme.of(context).textTheme.display1,
+                              style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold
+                              ),
                             ),
                             onTap: () => Navigator.pushNamed(context, '/forgot_pwd'),
                           ), 
@@ -179,7 +183,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: InkWell(
                               child: Text(
                                 'CREATE ACCOUNT',
-                                style: Theme.of(context).textTheme.display1,
+                                style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold
+                                ),
                               ),
                               onTap: () => Navigator.pushNamed(context, '/signup'),
                             ),
