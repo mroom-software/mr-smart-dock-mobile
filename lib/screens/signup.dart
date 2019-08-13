@@ -1,8 +1,13 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
 import 'package:smart_dock_mobile/data/validators/email_validator.dart';
 import 'package:smart_dock_mobile/data/validators/password_validator.dart';
 import 'package:smart_dock_mobile/widgets/button_widget.dart';
 import 'package:smart_dock_mobile/widgets/combobox_widget.dart';
+
+
+const String MIN_DATETIME = '1970-01-01';
 
 class SignUpScreen extends StatefulWidget {
 
@@ -13,10 +18,12 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   bool _isShowPwd = false;
   String _email, _password;
+  String _format = 'yyyy-MMMM-dd';
+  DateTime _dateTime;
 
   @override
   void initState() {
-    
+    _dateTime = DateTime.now();
     super.initState();
   }
   @override
@@ -96,15 +103,47 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               Expanded(
                                 flex: 4,
                                 child: Container(
-                                  
+                                  padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                  child: Text(
+                                    DateFormat(_format).format(_dateTime),
+                                  ),
                                 ),
                               ),
                               Expanded(
                                 flex: 1,
                                 child: Align(
                                   alignment: Alignment.centerRight,
-                                  child: Icon(
-                                    Icons.arrow_drop_down, 
+                                  child: InkWell(
+                                    onTap: () {
+                                      DatePicker.showDatePicker(
+                                        context,
+                                        pickerTheme: DateTimePickerTheme(
+                                          showTitle: true,
+                                          confirm: Text('Done', style: TextStyle(color: Colors.red)),
+                                          cancel: Text('Cancel', style: TextStyle(color: Colors.black87)),
+                                        ),
+                                        minDateTime: DateTime.parse(MIN_DATETIME),
+                                        maxDateTime: DateTime.now(),
+                                        initialDateTime: _dateTime,
+                                        dateFormat: _format,
+                                        locale: DateTimePickerLocale.en_us,
+                                        onClose: () => print('close'),
+                                        onCancel: () => print('cancel'),
+                                        onChange: (dateTime, List<int> index) {
+                                          setState(() {
+                                            _dateTime = dateTime;
+                                          });
+                                        },
+                                        onConfirm: (dateTime, List<int> index) {
+                                          setState(() {
+                                            _dateTime = dateTime;
+                                          });
+                                        },
+                                      );
+                                    },
+                                    child: Icon(
+                                      Icons.arrow_drop_down, 
+                                    ),
                                   ),
                                 ),
                               ),
