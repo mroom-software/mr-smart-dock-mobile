@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 
-class HomeSceeen extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: null,
+      body: Center(
+        child: Text(
+          ''
+        ),
+      ),
+    );
   }
-
 }
