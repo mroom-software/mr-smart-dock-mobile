@@ -4,6 +4,7 @@ import 'package:smart_dock_mobile/data/validators/email_validator.dart';
 import 'package:smart_dock_mobile/data/validators/password_validator.dart';
 import 'package:smart_dock_mobile/widgets/button_icon_widget.dart';
 import 'package:smart_dock_mobile/widgets/button_widget.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatefulWidget {
 
@@ -13,9 +14,16 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
 
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  // email + password fields
   bool _isShowPwd;
   String _email, _password;
+
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  GoogleSignIn _googleSignIn = GoogleSignIn(
+    scopes: [
+      'email',
+    ],
+  );
 
   @override
   void initState() {
@@ -137,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Container(
                       child: Text(
-                        '_____OR_____',
+                        '_____Or_____',
                         style: TextStyle(
                           fontSize: 13.0,
                           color: Theme.of(context).accentColor,
@@ -149,7 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
 
                     ButtonIconWidget(
-                      onPressed: () => print('1'),
+                      onPressed: () => _handleSignIn(),
                       title: 'LOGIN WITH GMAIL',
                     ),
                     SizedBox(
@@ -163,7 +171,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           child: InkWell(
                             child: Text(
                               'FORGOT DETAIL?',
-                              style: Theme.of(context).textTheme.display1,
+                              style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 13,
+                                fontWeight: FontWeight.bold
+                              ),
                             ),
                             onTap: () => Navigator.pushNamed(context, '/forgot_pwd'),
                           ), 
@@ -179,7 +191,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: InkWell(
                               child: Text(
                                 'CREATE ACCOUNT',
-                                style: Theme.of(context).textTheme.display1,
+                                style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.bold
+                                ),
                               ),
                               onTap: () => Navigator.pushNamed(context, '/signup'),
                             ),
@@ -207,5 +223,14 @@ class _LoginScreenState extends State<LoginScreen> {
       return true;
     }
     return false;
+  }
+
+  Future<void> _handleSignIn() async {
+    try {
+      var result = await _googleSignIn.signIn();
+      print('$result');
+    } catch (error) {
+      print(error);
+    }
   }
 }

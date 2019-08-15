@@ -1,4 +1,4 @@
-package com.example.smart_dock_mobile;
+package com.mroom.smartdock;
 
 import android.os.Bundle;
 import io.flutter.app.FlutterActivity;

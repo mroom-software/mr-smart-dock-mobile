@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:smart_dock_mobile/root.dart';
 import 'package:smart_dock_mobile/screens/forgot_pwd.dart';
 import 'package:smart_dock_mobile/screens/login.dart';
 import 'package:smart_dock_mobile/screens/signup.dart';
@@ -21,12 +22,13 @@ class Routes extends StatelessWidget {
           body1: TextStyle(fontSize: 15.0, fontStyle: FontStyle.normal,),
           title: TextStyle(fontSize: 18.0, fontStyle: FontStyle.normal,),
           subtitle: TextStyle(fontSize: 13.0, fontStyle: FontStyle.normal,),
-          display1: TextStyle(fontSize: 13.0, fontStyle: FontStyle.normal, color: Color(0xFF515151)),
+          display1: TextStyle(fontSize: 13.0, fontStyle: FontStyle.normal, color: Color.fromRGBO(81, 81, 81, 1)),
           button: TextStyle(fontSize: 16.0, fontStyle: FontStyle.normal, color: Colors.white),
         ),
       ),
       routes: {
-        '/': (context) => LoginScreen(),
+        '/': (context) => Root(),
+        '/login': (context) => LoginScreen(),
         '/signup': (context) => SignUpScreen(),
         '/forgot_pwd': (context) => ForgotPwdScreen(),
       },
