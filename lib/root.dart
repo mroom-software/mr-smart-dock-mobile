@@ -2,10 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_dock_mobile/blocs/auth/auth_bloc.dart';
 import 'package:smart_dock_mobile/blocs/auth/auth_states.dart';
+import 'package:smart_dock_mobile/blocs/login/login_bloc.dart';
+import 'package:smart_dock_mobile/repositories/user_repos.dart';
 import 'package:smart_dock_mobile/screens/home.dart';
 import 'package:smart_dock_mobile/screens/login.dart';
 
+
 class Root extends StatefulWidget {
+
+  final UserRepository userRepository;
+
+  Root({Key key, this.userRepository}) : super(key:key);
+
   @override
   _RootState createState() => _RootState();
 }
@@ -26,10 +34,21 @@ class _RootState extends State<Root> {
         }
 
         if (state is AuthenticationUnauthenticated) {
-          return LoginScreen();
+          return BlocProvider<LoginBloc>(
+            builder: (context) {
+              return LoginBloc(
+                authBloc: BlocProvider.of<AuthBloc>(context),
+                userRepository: widget.userRepository,
+              );
+            },
+            child: LoginScreen(),
+          );
         }
         
-        return Container();
+        return Center(
+          child: CircularProgressIndicator(
+          ),
+        );
       },
     );
   }

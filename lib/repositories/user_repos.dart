@@ -12,12 +12,12 @@ class UserRepository {
   UserRepository({@required this.db, @required this.api, }) : assert(db != null && api != null);
 
   Future<User> authenticate({
-    @required String username,
+    @required String email,
     @required String password,
   }) async {
 
     await Future.delayed(Duration(seconds: 1));
-    return User();
+    return null;
   }
 
   /// Select current [user].
