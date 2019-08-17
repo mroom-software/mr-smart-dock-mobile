@@ -6,7 +6,7 @@ import 'package:smart_dock_mobile/repositories/user_repos.dart';
 import 'package:smart_dock_mobile/routes.dart';
 import 'package:bloc/bloc.dart';
 import 'package:smart_dock_mobile/services/api.dart';
-import 'data/db/db.dart';
+import 'package:smart_dock_mobile/data/db/db.dart';
 
 class SimpleBlocDelegate extends BlocDelegate {
   @override

@@ -3,7 +3,6 @@ class User {
   int id;
   String name;
   
-  
   User({this.id, this.name, });
 
   Map<String, dynamic> toMap() {

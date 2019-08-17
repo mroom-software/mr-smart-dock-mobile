@@ -41,7 +41,6 @@ class DB {
   }
 
   Future<User> selectUser() async {
-    print('dbConn = $_dbConn');
     final List<Map<String, dynamic>> maps = await _dbConn.query('users');
     if (maps.length > 0) {
       final Map<String, dynamic> mUser = maps.last;
