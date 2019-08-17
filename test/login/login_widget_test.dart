@@ -6,14 +6,28 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:smart_dock_mobile/blocs/auth/auth_bloc.dart';
+import 'package:smart_dock_mobile/blocs/login/login_bloc.dart';
+import 'package:smart_dock_mobile/data/db/db.dart';
+import 'package:smart_dock_mobile/repositories/user_repos.dart';
 import 'package:smart_dock_mobile/screens/login.dart';
+import 'package:smart_dock_mobile/services/api.dart';
 
 void main() {
 
   Widget makeWidgetTestable({Widget child}) {
     return MaterialApp(
-      home: child,
+      home: BlocProvider<LoginBloc>(
+        builder: (context) {
+          return LoginBloc(
+            authBloc: AuthBloc(userRepository: UserRepository(db: db, api: api)),
+            userRepository: UserRepository(db: db, api: api),
+          );
+        },
+        child: child,
+      ),
     );
   }
 
