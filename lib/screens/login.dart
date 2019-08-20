@@ -1,11 +1,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_dock_mobile/blocs/auth/auth_bloc.dart';
 import 'package:smart_dock_mobile/blocs/login/login_bloc.dart';
 import 'package:smart_dock_mobile/blocs/login/login_events.dart';
 import 'package:smart_dock_mobile/blocs/login/login_states.dart';
+import 'package:smart_dock_mobile/blocs/signup/signup_bloc.dart';
 import 'package:smart_dock_mobile/data/validators/email_validator.dart';
 import 'package:smart_dock_mobile/data/validators/password_validator.dart';
+import 'package:smart_dock_mobile/screens/forgot_pwd.dart';
+import 'package:smart_dock_mobile/screens/signup.dart';
 import 'package:smart_dock_mobile/widgets/button_icon_widget.dart';
 import 'package:smart_dock_mobile/widgets/button_widget.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -195,7 +199,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       fontWeight: FontWeight.bold
                                     ),
                                   ),
-                                  onTap: () => Navigator.pushNamed(context, '/forgot_pwd'),
+                                  onTap: _loadForgotPwdScreen,
                                 ), 
                               ),
                               Expanded(
@@ -215,7 +219,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                         fontWeight: FontWeight.bold
                                       ),
                                     ),
-                                    onTap: () => Navigator.pushNamed(context, '/signup'),
+                                    onTap: _loadSignupScreen,
                                   ),
                                 ),
                               ),
@@ -262,5 +266,39 @@ class _LoginScreenState extends State<LoginScreen> {
     } catch (error) {
       print(error);
     }
+  }
+
+  void _loadSignupScreen() {
+    Navigator.push(
+      context, 
+      MaterialPageRoute(builder: (context) {
+        return BlocProvider<SignupBloc>(
+          builder: (context) {
+            return SignupBloc(
+              authBloc: BlocProvider.of<AuthBloc>(context),
+              userRepository: _loginBloc.userRepository,
+            );
+          },
+          child: SignUpScreen(),
+        );
+      })
+    );
+  }
+
+  void _loadForgotPwdScreen() {
+    Navigator.push(
+      context, 
+      MaterialPageRoute(builder: (context) {
+        return BlocProvider<SignupBloc>(
+          builder: (context) {
+            return SignupBloc(
+              authBloc: BlocProvider.of<AuthBloc>(context),
+              userRepository: _loginBloc.userRepository,
+            );
+          },
+          child: ForgotPwdScreen(),
+        );
+      })
+    );
   }
 }

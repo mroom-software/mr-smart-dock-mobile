@@ -12,7 +12,7 @@ class UserRepository {
 
   /// Auth [email], [password]
   ///
-  /// Reponse token if success. Otherwise throw error.
+  /// Response token if success. Otherwise throw error.
   Future<User> authenticate({
     @required String email,
     @required String password,
@@ -27,6 +27,13 @@ class UserRepository {
     print(map['Result']['Token']);
   
     
+    return null;
+  }
+
+  /// Signup a new user with [FirstName], [LastName], [DOB], [Gender], [Email], [Password]
+  ///
+  /// Response user info if success. Otherwise throw error.
+  Future<User> signup({String firstName, String lastName, String gender, String dob, String email, String password}) {
     return null;
   }
 
