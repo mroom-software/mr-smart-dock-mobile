@@ -24,7 +24,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   bool _isShowPwd = false;
-  String _email, _password;
+  String _email, _password, _firstName, _lastName;
   String _format = 'yyyy-MMMM-dd';
   DateTime _dateTime;
 
@@ -68,6 +68,59 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           SizedBox(
                             height: 10,
                           ),
+                          Row(
+                            children: <Widget>[
+                              Expanded(
+                                flex: 8,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Theme.of(context).accentColor),
+                                    borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                    child: TextFormField(
+                                      key: Key('First Name'),
+                                      validator: NameFieldValidator.validate,
+                                      onSaved: (value) => _firstName = value,
+                                      decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: 'First Name',
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 1,
+                                child: Container(),
+                              ),
+                              Expanded(
+                                flex: 8,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    border: Border.all(color: Theme.of(context).accentColor),
+                                    borderRadius: BorderRadius.all(Radius.circular(4.0)),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                                    child: TextFormField(
+                                      key: Key('Last Name'),
+                                      validator: NameFieldValidator.validate,
+                                      onSaved: (value) => _lastName = value,
+                                      decoration: InputDecoration(
+                                        border: InputBorder.none,
+                                        hintText: 'Last Name',
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20,
+                          ),
                           Container(
                             decoration: BoxDecoration(
                               border: Border.all(color: Theme.of(context).accentColor),
@@ -76,12 +129,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                               child: TextFormField(
-                                key: Key('Full Name'),
-                                validator: NameFieldValidator.validate,
+                                key: Key('Email'),
+                                validator: EmailFieldValidator.validate,
                                 onSaved: (value) => _email = value,
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
-                                  hintText: 'Full Name',
+                                  hintText: 'Email',
                                 ),
                               ),
                             ),
@@ -172,27 +225,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 ),
                               ),
                             ],
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Theme.of(context).accentColor),
-                              borderRadius: BorderRadius.all(Radius.circular(4.0)),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                              child: TextFormField(
-                                key: Key('Email'),
-                                validator: EmailFieldValidator.validate,
-                                onSaved: (value) => _email = value,
-                                decoration: InputDecoration(
-                                  border: InputBorder.none,
-                                  hintText: 'Email',
-                                ),
-                              ),
-                            ),
                           ),
                           SizedBox(
                             height: 20,

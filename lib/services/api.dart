@@ -31,7 +31,7 @@ class API {
   /// Response user info if success. Otherwise throw error
   Future<Response> userInfo(String token) async {
     _dio.options.headers['Authorization'] = 'Bearer ' + token;
-    return await _dio.get("/auth/login");
+    return await _dio.get("/user/profile");
   }
 
 }

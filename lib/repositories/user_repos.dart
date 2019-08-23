@@ -24,9 +24,14 @@ class UserRepository {
     }
 
     Map<String, dynamic> map = response.data;
-    print(map['Result']['Token']);
-  
-    
+    String token = map['Result']['Token'];
+    if (token.isNotEmpty) {
+      response = await api.userInfo(token);
+      map = response.data;
+      User user = User.fromMap(map['Result']);
+      this.db.insertUser(user);
+      return user;
+    }    
     return null;
   }
 

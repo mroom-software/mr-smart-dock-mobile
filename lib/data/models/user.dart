@@ -1,26 +1,41 @@
 
+import 'package:meta/meta.dart';
+
 class User {
   int id;
-  String name;
+  String fullName;
+  String firstName;
+  String lastName;
+  String email;
+  String apiToken;
+
   
-  User({this.id, this.name, });
+  User({this.id, this.fullName, this.firstName, this.lastName, @required this.email, this.apiToken });
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
-      'id': id,
-      'name': name,
+      'ID': id,
+      'FullName': fullName,
+      'FirstName': firstName,
+      'LastName': lastName,
+      'Email': email,
+      'APIToken': apiToken,
     };
     return map;
   }
 
   User.fromMap(Map<String, dynamic> map) {
-    id = map['id'] as int;
-    name = map['name'] as String;
+    id = map['ID'] as int;
+    fullName = map['FullName'] as String;
+    firstName = map['FirstName'] as String;
+    lastName = map['LastName'] as String;
+    email = map['Email'] as String;
+    apiToken = map['APIToken'] as String;
   }
 
   @override
   String toString() {
-    return ('id: ${this.id} - name: ${this.name}');
+    return ('id: ${this.id} - full name: ${this.fullName}');
   }
 
 }
