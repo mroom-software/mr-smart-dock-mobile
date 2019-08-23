@@ -1,14 +1,12 @@
-
 import 'package:flutter/material.dart';
 
-class ActivityScreen extends StatelessWidget {
-
+class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Center(
         child: Text(
-          'Activity'
+          'Setting'
         ),
       ),
     );

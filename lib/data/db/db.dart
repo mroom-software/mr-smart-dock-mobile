@@ -24,8 +24,13 @@ class DB {
         onCreate: (Database db, int version) async {
           await db.execute('''
             create table users ( 
-              id integer primary key autoincrement, 
-              name text)
+              ID integer primary key, 
+              FullName text,
+              FirstName text,
+              LastName text,
+              Email text,
+              APIToken text
+              )
           ''');
         },
       );
@@ -51,7 +56,7 @@ class DB {
 
   Future<User> selectUserID(int id) async {
     List<Map> maps = await _dbConn.query('users',
-                                        where: 'id = ?',
+                                        where: 'ID = ?',
                                         whereArgs: [id]);
     if (maps.length > 0) {
       return User.fromMap(maps.first);
@@ -60,9 +65,9 @@ class DB {
 
   }
 
-  Future<int> updateUser(User user) async => await _dbConn.update('users', user.toMap(), where: 'id = ?', whereArgs: [user.id]);
+  Future<int> updateUser(User user) async => await _dbConn.update('users', user.toMap(), where: 'ID = ?', whereArgs: [user.id]);
     
-  Future<int> deleteUser(int id) async => await _dbConn.delete('users', where: 'id = ?', whereArgs: [id]);
+  Future<int> deleteUser(int id) async => await _dbConn.delete('users', where: 'ID = ?', whereArgs: [id]);
 
   Future<int> deleteAllUsers() async => await _dbConn.delete('users');
 

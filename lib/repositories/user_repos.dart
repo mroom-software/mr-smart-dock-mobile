@@ -12,7 +12,7 @@ class UserRepository {
 
   /// Auth [email], [password]
   ///
-  /// Reponse token if success. Otherwise throw error.
+  /// Response token if success. Otherwise throw error.
   Future<User> authenticate({
     @required String email,
     @required String password,
@@ -24,9 +24,21 @@ class UserRepository {
     }
 
     Map<String, dynamic> map = response.data;
-    print(map['Result']['Token']);
-  
-    
+    String token = map['Result']['Token'];
+    if (token.isNotEmpty) {
+      response = await api.userInfo(token);
+      map = response.data;
+      User user = User.fromMap(map['Result']);
+      this.db.insertUser(user);
+      return user;
+    }    
+    return null;
+  }
+
+  /// Signup a new user with [FirstName], [LastName], [DOB], [Gender], [Email], [Password]
+  ///
+  /// Response user info if success. Otherwise throw error.
+  Future<User> signup({String firstName, String lastName, String gender, String dob, String email, String password}) {
     return null;
   }
 
