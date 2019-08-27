@@ -28,6 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String _format = 'yyyy-MMMM-dd';
   DateTime _dateTime;
 
+  SignupBloc _signupBloc;
 
   @override
   void initState() {
@@ -37,7 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SignupBloc _signupBloc = BlocProvider.of<SignupBloc>(context);
+    _signupBloc = BlocProvider.of<SignupBloc>(context);
 
     return BlocListener<SignupBloc, SignupState>(
       listener: (context, state) {
@@ -270,7 +271,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           });
                                         },
                                         child: Text(
-                                          'SHOW',
+                                          (_isShowPwd) ? 'HIDE' : 'SHOW',
                                           style: TextStyle(
                                             fontSize: 12.0,
                                             fontWeight: FontWeight.w500,

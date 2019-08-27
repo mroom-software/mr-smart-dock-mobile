@@ -26,6 +26,13 @@ class API {
     return await _dio.post("/auth/login", data: {"Email": email, "Password": password});
   }
 
+  /// Call signup with [firstName], [lastName], [dob], [gender], [email], [password]
+  ///
+  /// Response user info if success. Otherwise throw error
+  Future<Response> signup({String firstName, String lastName, String dob, String gender, String email, String password}) async {
+    return await _dio.post("/auth/register", data: {"FirstName": firstName, "LastName": lastName, "DOB": dob, "Gender": gender, "Email": email, "Password": password, "ConfirmPassword": password});
+  }
+
   /// Get user info based on [token]
   ///
   /// Response user info if success. Otherwise throw error

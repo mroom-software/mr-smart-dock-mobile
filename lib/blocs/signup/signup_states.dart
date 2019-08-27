@@ -25,3 +25,8 @@ class SignupFailure extends SignupState {
   @override
   String toString() => 'SignupFailure { error: $error }';
 }
+
+class SignupSuccess extends SignupState {
+  @override
+  String toString() => 'SignupSuccess';
+}

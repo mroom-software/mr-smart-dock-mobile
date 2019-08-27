@@ -1,7 +1,5 @@
 import 'package:smart_dock_mobile/blocs/auth/auth_bloc.dart';
 import 'package:smart_dock_mobile/blocs/auth/auth_events.dart';
-import 'package:smart_dock_mobile/blocs/login/login_events.dart';
-import 'package:smart_dock_mobile/blocs/login/login_states.dart';
 import 'package:bloc/bloc.dart';
 import 'package:smart_dock_mobile/blocs/signup/signup_events.dart';
 import 'package:smart_dock_mobile/blocs/signup/signup_states.dart';
