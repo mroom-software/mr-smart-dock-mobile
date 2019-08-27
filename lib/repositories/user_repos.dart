@@ -40,8 +40,28 @@ class UserRepository {
   /// Signup a new user with [FirstName], [LastName], [DOB], [Gender], [Email], [Password]
   ///
   /// Response user info if success. Otherwise throw error.
-  Future<User> signup({String firstName, String lastName, String gender, String dob, String email, String password}) {
-    return null;
+  Future<User> signup({
+    @required String firstName, 
+    @required String lastName, 
+    @required String gender,
+    @required String dob, 
+    @required String email, 
+    @required String password}) async {
+    
+
+    var response = await api.signup(
+      firstName: firstName,
+      lastName: lastName,
+      dob: dob,
+      gender: gender,
+      email: email,
+      password: password,
+    );
+    if (response.statusCode != 200) {
+      return null;
+    }
+
+    return await authenticate(email: email, password: password);
   }
 
   /// Select current [user].
