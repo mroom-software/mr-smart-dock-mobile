@@ -270,7 +270,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           });
                                         },
                                         child: Text(
-                                          'SHOW',
+                                          (_isShowPwd) ? 'HIDE' : 'SHOW',
                                           style: TextStyle(
                                             fontSize: 12.0,
                                             fontWeight: FontWeight.w500,

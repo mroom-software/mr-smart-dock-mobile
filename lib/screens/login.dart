@@ -140,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                           });
                                         },
                                         child: Text(
-                                          'SHOW',
+                                          (_isShowPwd) ? 'HIDE' : 'SHOW',
                                           style: TextStyle(
                                             fontSize: 12.0,
                                             fontWeight: FontWeight.w500,
