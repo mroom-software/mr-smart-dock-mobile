@@ -30,6 +30,7 @@ class SignupBloc extends Bloc<SignupEvent, SignupState> {
 
         if (user != null) {
           authBloc.dispatch(LoggedIn(user: user));
+          yield SignupSuccess();
         } else {
           yield SignupFailure(error: 'Signup Failed');
         }
