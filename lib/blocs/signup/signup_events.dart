@@ -1,5 +1,6 @@
 
 import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
 
 abstract class SignupEvent extends Equatable {
   SignupEvent([List props = const []]) : super(props);
@@ -14,12 +15,12 @@ class SignupButtonPressed extends SignupEvent {
   final String password;
 
   SignupButtonPressed({
-    this.firstName,
-    this.lastName,
-    this.gender,
-    this.dob,
-    this.email, 
-    this.password,
+    @required this.firstName,
+    @required this.lastName,
+    @required this.gender,
+    @required this.dob,
+    @required this.email, 
+    @required this.password,
   }) : super([firstName, lastName, gender, dob, email, password]);
 
   @override

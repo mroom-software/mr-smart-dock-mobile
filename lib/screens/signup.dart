@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
 import 'package:smart_dock_mobile/blocs/signup/signup_bloc.dart';
+import 'package:smart_dock_mobile/blocs/signup/signup_events.dart';
 import 'package:smart_dock_mobile/blocs/signup/signup_states.dart';
 import 'package:smart_dock_mobile/data/validators/email_validator.dart';
 import 'package:smart_dock_mobile/data/validators/name_validator.dart';
@@ -24,7 +25,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   bool _isShowPwd = false;
-  String _email, _password, _firstName, _lastName;
+  String _email, _password, _firstName, _lastName, _gender = "Male";
   String _format = 'yyyy-MMMM-dd';
   DateTime _dateTime;
 
@@ -42,7 +43,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     return BlocListener<SignupBloc, SignupState>(
       listener: (context, state) {
-
+        if(state is SignupSuccess) {
+          Navigator.pop(context);
+        }
       },
       child: BlocBuilder<SignupBloc, SignupState>(
         bloc: _signupBloc,
@@ -154,8 +157,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     borderRadius: BorderRadius.all(Radius.circular(4.0)),
                                   ),
                                   child: ComboboxWidget(
-                                    lblContent: 'Gender',
+                                    lblContent: _gender,
                                     entries: ['Male', 'Female'],
+                                    onChangedValue: (value) {
+                                      _gender = value;
+                                    },
                                   ),
                                 ),
                               ),
@@ -288,8 +294,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           SizedBox(
                             height: 40,
                           ),
+                          (state is SignupLoading) ? 
+                          CircularProgressIndicator() :
                           ButtonWidget(
-                            onPressed: () => validateAndSave(), 
+                            onPressed: _btnSignupPressed, 
                             title: 'SIGN UP',
                           ),
                           SizedBox(
@@ -327,12 +335,25 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );  
   }
 
-  bool validateAndSave() {
+  bool _validateAndSave() {
     final FormState form = formKey.currentState;
     if (form.validate()) {
       form.save();
       return true;
     }
     return false;
+  }
+
+  void _btnSignupPressed() {
+    if (_validateAndSave()) {
+      _signupBloc.dispatch(SignupButtonPressed(
+        firstName: _firstName,
+        lastName: _lastName,
+        gender: _gender,
+        dob: _dateTime.toString(),
+        email: _email,
+        password: _password,
+      ));
+    }
   }
 }
