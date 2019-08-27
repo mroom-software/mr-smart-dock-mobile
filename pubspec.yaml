@@ -32,6 +32,7 @@ dependencies:
   equatable: ^0.4.0
   meta: ^1.1.6
   dio: ^2.1.0
+  flutter_secure_storage: ^3.2.1+1
 
 dev_dependencies:
   flutter_test:

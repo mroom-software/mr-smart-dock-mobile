@@ -2,6 +2,7 @@
 import 'package:meta/meta.dart';
 import 'package:smart_dock_mobile/data/db/db.dart';
 import 'package:smart_dock_mobile/data/models/user.dart';
+import 'package:smart_dock_mobile/helpers/utils.dart';
 import 'package:smart_dock_mobile/services/api.dart';
 
 class UserRepository {
@@ -30,6 +31,7 @@ class UserRepository {
       map = response.data;
       User user = User.fromMap(map['Result']);
       this.db.insertUser(user);
+      await utils.saveSecureData('token', token);
       return user;
     }    
     return null;
@@ -50,6 +52,8 @@ class UserRepository {
   }
 
   Future<bool> logout() async {
+    await utils.deletSecureData('token');
+    await this.db.deleteAllUsers();
     return true;
   }
 
