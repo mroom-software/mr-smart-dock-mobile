@@ -2,22 +2,59 @@ import 'package:flutter/material.dart';
 
 class ButtonIconWidget extends StatefulWidget {
 
-  final Function() onPressed;
+  final Function onPressed;
   final String title;
+  final IconData icon; 
 
   const ButtonIconWidget({
     Key key, 
     @required this.onPressed, 
-    @required this.title}) : super(key: key);
+    @required this.title,
+    this.icon}) : super(key: key);
 
   @override
   _ButtonIconWidgetState createState() => _ButtonIconWidgetState();
 }
 
 class _ButtonIconWidgetState extends State<ButtonIconWidget> {
+
+  Widget _buildText() {
+    if (widget.icon == null) {
+      return Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              widget.title,
+              style: Theme.of(context).textTheme.button,
+            ),
+          ],
+        ), 
+      );
+    }
+
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(
+            widget.icon,
+            color: Colors.white,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          Text(
+            widget.title,
+            style: Theme.of(context).textTheme.button,
+          ),
+        ],
+      ), 
+    );
+  }
+
   @override
-  Widget build(BuildContext context) {
-    
+  Widget build(BuildContext context) {  
     return Container(
       height: 50,
       decoration: BoxDecoration(
@@ -41,24 +78,7 @@ class _ButtonIconWidgetState extends State<ButtonIconWidget> {
             widget.onPressed();
           }
         },
-        child: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Icon(
-                Icons.mail_outline,
-                color: Colors.white,
-              ),
-              SizedBox(
-                width: 10,
-              ),
-              Text(
-                widget.title,
-                style: Theme.of(context).textTheme.button,
-              ),
-            ],
-          ), 
-        ),
+        child: _buildText(),
       ),
     );
   }

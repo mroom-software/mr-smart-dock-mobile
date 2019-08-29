@@ -181,6 +181,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ButtonIconWidget(
                             onPressed: () => _handleGoogleSignIn(),
                             title: 'LOGIN WITH GMAIL',
+                            icon: Icons.mail_outline,
                           ),
                           SizedBox(
                             height: 30,

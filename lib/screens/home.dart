@@ -69,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print('Go to setup flow');
+          Navigator.pushNamed(context, '/setup');
         },
         child: Icon(
           Icons.add,

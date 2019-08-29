@@ -4,6 +4,7 @@ import 'package:smart_dock_mobile/repositories/user_repos.dart';
 import 'package:smart_dock_mobile/root.dart';
 import 'package:smart_dock_mobile/screens/forgot_pwd.dart';
 import 'package:smart_dock_mobile/screens/login.dart';
+import 'package:smart_dock_mobile/screens/setup/setup.dart';
 import 'package:smart_dock_mobile/screens/signup.dart';
 import 'package:smart_dock_mobile/services/api.dart';
 import 'package:smart_dock_mobile/data/db/db.dart';
@@ -35,6 +36,7 @@ class Routes extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/signup': (context) => SignUpScreen(),
         '/forgot_pwd': (context) => ForgotPwdScreen(),
+        '/setup': (context) => SetupScreen(),
       },
     );
   }
