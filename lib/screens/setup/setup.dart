@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:smart_dock_mobile/widgets/setup/active_smartdock_widget.dart';
+import 'package:smart_dock_mobile/widgets/setup/connect_hotspot_widget.dart';
+import 'package:smart_dock_mobile/widgets/setup/setup_wifi_widget.dart';
 class SetupScreen extends StatefulWidget {
 
   @override
@@ -13,9 +15,8 @@ class _SetupScreenState extends State<SetupScreen> {
 
   @override
   void initState() {
-    super.initState();
-
     _idx = 0;
+    super.initState();
   }
 
   @override
@@ -44,8 +45,28 @@ class _SetupScreenState extends State<SetupScreen> {
             });
           },
         );
+
+      case 2:
+        return ConnectHotspotWidget(
+          title: 'Connect SmartDock hotspot',
+          description: 'Go to Settings > Wifi > Connect SmartDock',
+          imgName: 'assets/setup_3.png',
+          onCallback: () {
+            setState(() {
+              _idx++;
+            });
+          },
+        );
+
+      case 3:
+        return SetupWifiWidget(
+          title: 'Connect SmartDock hotspot',
+          description: 'Go to Settings > Wifi > Connect SmartDock',
+        );
     }
     
-    return CircularProgressIndicator();
+    return Center(
+      child: CircularProgressIndicator(),
+    );
   }
 }
