@@ -23,16 +23,26 @@ class _SetupScreenState extends State<SetupScreen> {
     switch (_idx) {
       case 0:
         return ActiveSmartDockWidget(
-          title: '1',
-          description: '2',
+          title: 'Activate your SmartDock',
+          description: 'Press reset button till the leds flash',
           imgName: 'assets/setup_1.png',
+          onCallback: () {
+            setState(() {
+              _idx++;
+            });
+          },
         );
 
       case 1:
         return ActiveSmartDockWidget(
-          title: '1',
-          description: '2',
+          title: 'Activate your SmartDock',
+          description: 'Place an empty cup on top of SmartDock till the leds off',
           imgName: 'assets/setup_2.png',
+          onCallback: () {
+            setState(() {
+              _idx++;
+            });
+          },
         );
     }
     
