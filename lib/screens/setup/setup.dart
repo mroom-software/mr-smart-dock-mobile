@@ -60,8 +60,11 @@ class _SetupScreenState extends State<SetupScreen> {
 
       case 3:
         return SetupWifiWidget(
-          title: 'Connect SmartDock hotspot',
-          description: 'Go to Settings > Wifi > Connect SmartDock',
+          title: 'WIFI',
+          description: 'Input your wifi configuration to finish process',
+          onCallback: (ssid, wpa) {
+
+          },
         );
     }
     
