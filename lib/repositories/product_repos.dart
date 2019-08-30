@@ -12,7 +12,6 @@ class ProductRepository {
     @required String wpa,
     @required Function onCallback,
   }) async {
-
     await Socket.connect(Config.hostspotIP, 4567).then((socket) {
       print('Connected to: '
         '${socket.remoteAddress.address}:${socket.remotePort}');
