@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_dock_mobile/blocs/setup/setup_bloc.dart';
+import 'package:smart_dock_mobile/data/db/db.dart';
 import 'package:smart_dock_mobile/packages/fab/fab_bottom_app_bar.dart';
 import 'package:smart_dock_mobile/repositories/product_repos.dart';
 import 'package:smart_dock_mobile/screens/activity.dart';
@@ -96,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
         return BlocProvider<SetupBloc>(
           builder: (context) {
             return SetupBloc(
-              productRepository: ProductRepository(),
+              productRepository: ProductRepository(db: db),
             );
           },
           child: SetupScreen(),
