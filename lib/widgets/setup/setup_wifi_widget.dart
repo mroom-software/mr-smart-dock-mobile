@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:smart_dock_mobile/data/validators/email_validator.dart';
+import 'package:smart_dock_mobile/data/validators/name_validator.dart';
 import 'package:smart_dock_mobile/data/validators/password_validator.dart';
 import 'package:smart_dock_mobile/widgets/button_icon_widget.dart';
 
@@ -21,6 +21,7 @@ class SetupWifiWidget extends StatefulWidget {
 
 class _SetupWifiWidgetState extends State<SetupWifiWidget> {
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String _ssid, _wpa;
   bool _isShowPwd;
 
@@ -76,6 +77,7 @@ class _SetupWifiWidgetState extends State<SetupWifiWidget> {
                 height: 45,
               ),
               Form(
+                key: _formKey,
                 child: SingleChildScrollView(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Column(
@@ -89,7 +91,7 @@ class _SetupWifiWidgetState extends State<SetupWifiWidget> {
                           padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                           child: TextFormField(
                             key: Key('SSID'),
-                            validator: EmailFieldValidator.validate,
+                            validator: SSIDFieldValidator.validate,
                             onSaved: (value) => _ssid = value,
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -113,13 +115,13 @@ class _SetupWifiWidgetState extends State<SetupWifiWidget> {
                               child: Padding(
                                 padding: const EdgeInsets.fromLTRB(10, 0, 0, 0),
                                 child: TextFormField(
-                                  key: Key('Password'),
+                                  key: Key('WPA'),
                                   validator: PasswordFieldValidator.validate,
                                   onSaved: (value) => _wpa = value,
                                   obscureText: (_isShowPwd) ? false : true,
                                   decoration: InputDecoration(
                                     border: InputBorder.none,
-                                    hintText: 'Your Password',
+                                    hintText: 'WPA',
                                   ),
                                 ),
                               ),
@@ -167,7 +169,7 @@ class _SetupWifiWidgetState extends State<SetupWifiWidget> {
                 padding: const EdgeInsets.symmetric(horizontal: 25),
                 child: ButtonIconWidget(
                   title: 'FINISH',
-                  onPressed: null,
+                  onPressed: _finishSetupWifi,
                 ),
               ),
             ],
@@ -175,5 +177,22 @@ class _SetupWifiWidgetState extends State<SetupWifiWidget> {
         ),
       ),
     );
+  }
+
+  bool _validateAndSave() {
+    final FormState form = _formKey.currentState;
+    if (form.validate()) {
+      form.save();
+      return true;
+    }
+    return false;
+  }
+
+  void _finishSetupWifi() {
+    if (_validateAndSave()) {
+      if(widget.onCallback != null) {
+        widget.onCallback(_ssid, _wpa);
+      }
+    }
   }
 }
