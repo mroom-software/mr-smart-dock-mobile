@@ -7,12 +7,13 @@ import 'package:smart_dock_mobile/config/config.dart';
 
 class ProductRepository {
 
-  Future<bool> setupWifi({
+  Future<void> setupWifi({
     @required String ssid,
     @required String wpa,
+    @required Function onCallback,
   }) async {
 
-    Socket.connect(Config.hostspotIP, 4567).then((socket) {
+    await Socket.connect(Config.hostspotIP, 4567).then((socket) {
       print('Connected to: '
         '${socket.remoteAddress.address}:${socket.remotePort}');
       
@@ -21,7 +22,8 @@ class ProductRepository {
         print('Received: $message');
       },
       onError: (error) {
-        print(error);
+        onCallback(error);
+        return error;
       },
       onDone: () {
         print('done');
@@ -33,8 +35,7 @@ class ProductRepository {
 
       socket.write(jsonEncode(data));
     });
-    
-    return true;
+
   }
 
 }
