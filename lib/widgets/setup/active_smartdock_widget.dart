@@ -58,13 +58,13 @@ class _ActiveSmartDockWidgetState extends State<ActiveSmartDockWidget> {
                     style: Theme.of(context).textTheme.title,
                   ),
                   SizedBox(
-                    height: 80,
+                    height: 45,
                   ),
                   Text(
                     widget.description
                   ),
                   SizedBox(
-                    height: 80,
+                    height: 45,
                   ),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 25),

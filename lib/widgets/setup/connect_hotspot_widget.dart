@@ -64,17 +64,17 @@ class _ConnectHotspotWidgetState extends State<ConnectHotspotWidget> {
                 style: Theme.of(context).textTheme.title,
               ),
               SizedBox(
-                height: 60,
+                height: 45,
               ),
               Text(
                 widget.description
               ),
               SizedBox(
-                height: 60,
+                height: 45,
               ),
               Image.asset(widget.imgName),
               SizedBox(
-                height: 40,
+                height: 45,
               ),
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 25),

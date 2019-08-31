@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_dock_mobile/blocs/setup/setup_bloc.dart';
+import 'package:smart_dock_mobile/data/db/db.dart';
 import 'package:smart_dock_mobile/packages/fab/fab_bottom_app_bar.dart';
+import 'package:smart_dock_mobile/repositories/product_repos.dart';
 import 'package:smart_dock_mobile/screens/activity.dart';
 import 'package:smart_dock_mobile/screens/setting.dart';
+import 'package:smart_dock_mobile/screens/setup/setup.dart';
 
 enum Page {
   Activity,
@@ -68,9 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, '/setup');
-        },
+        onPressed: _loadSetupFlow,
         child: Icon(
           Icons.add,
           color: Colors.white,
@@ -85,5 +88,21 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() {
       _lastSelected = index;
     });
+  }
+
+  void _loadSetupFlow() {
+    Navigator.push(
+      context, 
+      MaterialPageRoute(builder: (context) {
+        return BlocProvider<SetupBloc>(
+          builder: (context) {
+            return SetupBloc(
+              productRepository: ProductRepository(db: db),
+            );
+          },
+          child: SetupScreen(),
+        );
+      })
+    );
   }
 }
