@@ -15,7 +15,7 @@ void main() {
 
   test('test password empty returns error string', () {
     var result = PasswordFieldValidator.validate('');
-    expect(result, 'Password cannot be empty');
+    expect(result, 'Password cannot be empty and at least 6 characters');
 
     result = PasswordFieldValidator.validate('123456');
     expect(result, null);
