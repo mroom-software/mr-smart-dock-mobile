@@ -262,8 +262,17 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> _handleGoogleSignIn() async {
     try {
-      var result = await _googleSignIn.signIn();
-      print('$result');
+      GoogleSignInAccount result = await _googleSignIn.signIn();
+      var auth = await result.authentication;
+      _loginBloc.dispatch(
+        LoginGoogleButtonPressed(
+          fullName: result.displayName,
+          email: result.email,
+          socialID: result.id,
+          socialToken: auth.accessToken,
+          socialType: 0,
+        )
+      );
     } catch (error) {
       print(error);
     }

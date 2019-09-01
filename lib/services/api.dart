@@ -26,6 +26,13 @@ class API {
     return await _dio.post("/auth/login", data: {"Email": email, "Password": password});
   }
 
+  /// Call auth social account with [email], [password]
+  ///
+  /// Response jwt if success. Otherwise throw error
+  Future<Response> authSocialAccount(String fullName, String email, String socialID, String socialToken, int socialType) async {
+    return await _dio.post("/auth/social-login", data: {"FullName": fullName, "Email": email, "SocialID": socialID, "SocialToken": socialToken, "SocialType": socialType});
+  }
+
   /// Call signup with [firstName], [lastName], [dob], [gender], [email], [password]
   ///
   /// Response user info if success. Otherwise throw error
