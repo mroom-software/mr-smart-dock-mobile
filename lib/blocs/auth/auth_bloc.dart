@@ -33,7 +33,13 @@ class AuthBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
     }
 
     if (event is LoggedOut) {
-      yield AuthenticationUnauthenticated();
+      bool result = await userRepository.logout();
+      if (result) {
+        yield AuthenticationUnauthenticated();
+      } else {
+        yield AuthenticationError();
+      }
+      
     }
   }
 
