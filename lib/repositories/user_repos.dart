@@ -37,6 +37,41 @@ class UserRepository {
     return null;
   }
 
+  /// Auth [email], [password]
+  ///
+  /// Response token if success. Otherwise throw error.
+  Future<User> authenticateSocialAccount({
+    String fullName,
+    @required String email,
+    @required String socialID,
+    @required String socialToken,
+    @required int socialType,
+  }) async {
+
+    var response = await api.authSocialAccount(
+      fullName, 
+      email,
+      socialID,
+      socialToken,
+      socialType
+    );
+    if (response.statusCode != 200) {
+      return null;
+    }
+
+    Map<String, dynamic> map = response.data;
+    String token = map['Result']['Token'];
+    if (token.isNotEmpty) {
+      response = await api.userInfo(token);
+      map = response.data;
+      User user = User.fromMap(map['Result']);
+      this.db.insertUser(user);
+      await utils.saveSecureData('token', token);
+      return user;
+    }    
+    return null;
+  }
+
   /// Signup a new user with [FirstName], [LastName], [DOB], [Gender], [Email], [Password]
   ///
   /// Response user info if success. Otherwise throw error.
