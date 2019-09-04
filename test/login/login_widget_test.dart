@@ -11,6 +11,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:smart_dock_mobile/blocs/auth/auth_bloc.dart';
 import 'package:smart_dock_mobile/blocs/login/login_bloc.dart';
 import 'package:smart_dock_mobile/blocs/login/login_events.dart';
+import 'package:smart_dock_mobile/data/models/user.dart';
 import 'package:smart_dock_mobile/mocks/repos/user_repos.dart';
 import 'package:smart_dock_mobile/screens/login.dart';
 
@@ -34,7 +35,7 @@ void main() {
     LoginScreen screen = LoginScreen();
     await tester.pumpWidget(makeWidgetTestable(child: screen, loginBloc: _loginBloc));
 
-    // 
+    // login failed
     _loginBloc.dispatch(LoginButtonPressed(
       email: 'trongdth@gmail.com',
       password: '123456'
@@ -43,6 +44,15 @@ void main() {
     await tester.pump();
     final loginKey = Key('BtnLogin');
     expect(find.byKey(loginKey), findsOneWidget);
-    
+
+    // login success
+    mockUserRepository.user = User(email: 'trongdth@gmail.com');
+    _loginBloc.dispatch(LoginButtonPressed(
+      email: 'trongdth@gmail.com',
+      password: '123456'
+    ));
+
+    await tester.pump();
+    expect(find.byKey(loginKey), findsNothing);
   });
 }

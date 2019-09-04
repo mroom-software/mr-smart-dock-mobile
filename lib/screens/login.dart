@@ -54,6 +54,15 @@ class _LoginScreenState extends State<LoginScreen> {
       child: BlocBuilder<LoginBloc, LoginState>(
         bloc: _loginBloc,
         builder: (context, state) {
+          if (state is LoginSuccess) {
+            return Container(
+              child: Center(
+                child: Text(
+                  'Loading'
+                ),
+              ),
+            );
+          }
           return Scaffold(
             key: _scaffoldstate,
             appBar: null,
