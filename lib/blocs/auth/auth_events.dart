@@ -16,7 +16,7 @@ class LoggedIn extends AuthenticationEvent {
   LoggedIn({this.user}) : super([user]);
 
   @override
-  String toString() => 'LoggedIn: $user.name';
+  String toString() => 'LoggedIn: ${user.fullName}';
 }
 
 class LoggedOut extends AuthenticationEvent {

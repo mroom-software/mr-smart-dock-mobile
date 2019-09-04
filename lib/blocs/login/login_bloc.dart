@@ -6,7 +6,7 @@ import 'package:bloc/bloc.dart';
 import 'package:smart_dock_mobile/repositories/user_repos.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final UserRepository userRepository;
+  final BaseUserRepository userRepository;
   final AuthBloc authBloc;
 
   LoginBloc({this.userRepository, this.authBloc}) : assert(userRepository != null), assert(authBloc != null);

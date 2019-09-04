@@ -10,7 +10,7 @@ import 'package:smart_dock_mobile/repositories/user_repos.dart';
 
 class AuthBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
 
-  final UserRepository userRepository;
+  final BaseUserRepository userRepository;
 
   AuthBloc({@required this.userRepository}) : assert(userRepository != null);
 

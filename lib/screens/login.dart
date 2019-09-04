@@ -251,6 +251,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return false;
   }
 
+
   void _handleLogin() {
     if(_validateAndSave()) {
       _loginBloc.dispatch(LoginButtonPressed(

@@ -11,19 +11,20 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:smart_dock_mobile/blocs/auth/auth_bloc.dart';
 import 'package:smart_dock_mobile/blocs/login/login_bloc.dart';
 import 'package:smart_dock_mobile/data/db/db.dart';
+import 'package:smart_dock_mobile/mocks/repos/user_repos.dart';
 import 'package:smart_dock_mobile/repositories/user_repos.dart';
 import 'package:smart_dock_mobile/screens/login.dart';
 import 'package:smart_dock_mobile/services/api.dart';
 
 void main() {
 
-  Widget makeWidgetTestable({Widget child}) {
+  Widget makeWidgetTestable({Widget child, BaseUserRepository userRepository}) {
     return MaterialApp(
       home: BlocProvider<LoginBloc>(
         builder: (context) {
           return LoginBloc(
-            authBloc: AuthBloc(userRepository: UserRepository(db: db, api: api)),
-            userRepository: UserRepository(db: db, api: api),
+            authBloc: AuthBloc(userRepository: userRepository),
+            userRepository: userRepository,
           );
         },
         child: child,
@@ -32,7 +33,10 @@ void main() {
   }
 
   testWidgets('Login Screen', (WidgetTester tester) async {
+    MockUserRepository mockUserRepository = MockUserRepository(db: db, api: api,); 
+
     LoginScreen screen = LoginScreen();
-    await tester.pumpWidget(makeWidgetTestable(child: screen));
+    await tester.pumpWidget(makeWidgetTestable(child: screen, userRepository: mockUserRepository));
+    
   });
 }
