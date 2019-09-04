@@ -5,7 +5,15 @@ import 'package:smart_dock_mobile/data/models/user.dart';
 import 'package:smart_dock_mobile/helpers/utils.dart';
 import 'package:smart_dock_mobile/services/api.dart';
 
-class UserRepository {
+abstract class BaseUserRepository {
+  Future<User> authenticate({@required String email, @required String password,});
+  Future<User> authenticateSocialAccount({String fullName, @required String email, @required String socialID, @required String socialToken, @required int socialType,});
+  Future<User> signup({@required String firstName, @required String lastName, @required String gender, @required String dob, @required String email, @required String password});
+  Future<User> currentUser();
+  Future<bool> logout();
+}
+
+class UserRepository extends BaseUserRepository {
   final DB db;
   final API api;
 

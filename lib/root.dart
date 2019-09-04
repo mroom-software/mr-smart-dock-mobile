@@ -10,7 +10,7 @@ import 'package:smart_dock_mobile/screens/login.dart';
 
 class Root extends StatefulWidget {
 
-  final UserRepository userRepository;
+  final BaseUserRepository userRepository;
 
   Root({Key key, this.userRepository}) : super(key:key);
 

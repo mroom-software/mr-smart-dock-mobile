@@ -4,6 +4,9 @@ Understand your bodies. Let's reduce dehydration in office worker.
 
 ### Show some :heart: and star the repo to support the project
 
+### How to Run:
+
+- Change config > config_example.dart to config > config.dart
 
 ### Download
 

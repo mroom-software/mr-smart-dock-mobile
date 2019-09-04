@@ -3,10 +3,11 @@ import 'package:smart_dock_mobile/blocs/auth/auth_events.dart';
 import 'package:smart_dock_mobile/blocs/login/login_events.dart';
 import 'package:smart_dock_mobile/blocs/login/login_states.dart';
 import 'package:bloc/bloc.dart';
+import 'package:smart_dock_mobile/data/models/user.dart';
 import 'package:smart_dock_mobile/repositories/user_repos.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final UserRepository userRepository;
+  final BaseUserRepository userRepository;
   final AuthBloc authBloc;
 
   LoginBloc({this.userRepository, this.authBloc}) : assert(userRepository != null), assert(authBloc != null);
@@ -27,6 +28,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         );
 
         if (user != null) {
+          yield LoginSuccess();
           authBloc.dispatch(LoggedIn(user: user));
         } else {
           yield LoginFailure(error: 'Login Failed');
@@ -50,6 +52,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         );
 
         if (user != null) {
+          yield LoginSuccess();
           authBloc.dispatch(LoggedIn(user: user));
         } else {
           yield LoginFailure(error: 'Login Failed');

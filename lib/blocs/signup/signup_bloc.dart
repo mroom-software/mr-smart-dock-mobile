@@ -6,7 +6,7 @@ import 'package:smart_dock_mobile/blocs/signup/signup_states.dart';
 import 'package:smart_dock_mobile/repositories/user_repos.dart';
 
 class SignupBloc extends Bloc<SignupEvent, SignupState> {
-  final UserRepository userRepository;
+  final BaseUserRepository userRepository;
   final AuthBloc authBloc;
 
   SignupBloc({this.userRepository, this.authBloc}) : assert(userRepository != null), assert(authBloc != null);

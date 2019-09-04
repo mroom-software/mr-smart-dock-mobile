@@ -54,6 +54,15 @@ class _LoginScreenState extends State<LoginScreen> {
       child: BlocBuilder<LoginBloc, LoginState>(
         bloc: _loginBloc,
         builder: (context, state) {
+          if (state is LoginSuccess) {
+            return Container(
+              child: Center(
+                child: Text(
+                  'Loading'
+                ),
+              ),
+            );
+          }
           return Scaffold(
             key: _scaffoldstate,
             appBar: null,
@@ -159,6 +168,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             height: 40,
                           ),
                           ButtonWidget(
+                            key: Key('BtnLogin'),
                             onPressed: () => _handleLogin(),
                             title: 'LOGIN',
                           ),
@@ -250,6 +260,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
     return false;
   }
+
 
   void _handleLogin() {
     if(_validateAndSave()) {

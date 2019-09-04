@@ -10,21 +10,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:smart_dock_mobile/blocs/auth/auth_bloc.dart';
 import 'package:smart_dock_mobile/blocs/login/login_bloc.dart';
-import 'package:smart_dock_mobile/data/db/db.dart';
-import 'package:smart_dock_mobile/repositories/user_repos.dart';
+import 'package:smart_dock_mobile/blocs/login/login_events.dart';
+import 'package:smart_dock_mobile/data/models/user.dart';
+import 'package:smart_dock_mobile/mocks/repos/user_repos.dart';
 import 'package:smart_dock_mobile/screens/login.dart';
-import 'package:smart_dock_mobile/services/api.dart';
 
 void main() {
 
-  Widget makeWidgetTestable({Widget child}) {
+  Widget makeWidgetTestable({Widget child, LoginBloc loginBloc}) {
     return MaterialApp(
       home: BlocProvider<LoginBloc>(
         builder: (context) {
-          return LoginBloc(
-            authBloc: AuthBloc(userRepository: UserRepository(db: db, api: api)),
-            userRepository: UserRepository(db: db, api: api),
-          );
+          return loginBloc;
         },
         child: child,
       ),
@@ -32,7 +29,30 @@ void main() {
   }
 
   testWidgets('Login Screen', (WidgetTester tester) async {
+    MockUserRepository mockUserRepository = MockUserRepository(); 
+    LoginBloc _loginBloc = LoginBloc(authBloc: AuthBloc(userRepository: mockUserRepository), userRepository: mockUserRepository);
+
     LoginScreen screen = LoginScreen();
-    await tester.pumpWidget(makeWidgetTestable(child: screen));
+    await tester.pumpWidget(makeWidgetTestable(child: screen, loginBloc: _loginBloc));
+
+    // login failed
+    _loginBloc.dispatch(LoginButtonPressed(
+      email: 'trongdth@gmail.com',
+      password: '123456'
+    ));
+
+    await tester.pump();
+    final loginKey = Key('BtnLogin');
+    expect(find.byKey(loginKey), findsOneWidget);
+
+    // login success
+    mockUserRepository.user = User(email: 'trongdth@gmail.com');
+    _loginBloc.dispatch(LoginButtonPressed(
+      email: 'trongdth@gmail.com',
+      password: '123456'
+    ));
+
+    await tester.pump();
+    expect(find.byKey(loginKey), findsNothing);
   });
 }
