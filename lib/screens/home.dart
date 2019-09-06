@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onTabSelected: _selectedTab,
         items: [
           FABBottomAppBarItem(iconData: Icons.menu),
-          FABBottomAppBarItem(iconData: Icons.layers),
+          FABBottomAppBarItem(iconData: Icons.settings),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
