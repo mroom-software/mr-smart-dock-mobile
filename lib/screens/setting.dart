@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_dock_mobile/blocs/auth/auth_bloc.dart';
 import 'package:smart_dock_mobile/blocs/auth/auth_events.dart';
-import 'package:smart_dock_mobile/widgets/button_widget.dart';
+import 'package:smart_dock_mobile/widgets/common/button_widget.dart';
 
 class SettingScreen extends StatefulWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_dock_mobile/data/validators/email_validator.dart';
-import 'package:smart_dock_mobile/widgets/button_widget.dart';
+import 'package:smart_dock_mobile/widgets/common/button_widget.dart';
 
 class ForgotPwdScreen extends StatefulWidget {
   @override

@@ -59,16 +59,14 @@ class _HomeScreenState extends State<HomeScreen> {
         title: _buildTitle(context),
         elevation: 0.5,
       ),
-      body: Center(
-        child: _buildPages(context),
-      ),
+      body: _buildPages(context),
       bottomNavigationBar: FABBottomAppBar(
         backgroundColor: Colors.white,
         notchedShape: CircularNotchedRectangle(),
         onTabSelected: _selectedTab,
         items: [
           FABBottomAppBarItem(iconData: Icons.menu),
-          FABBottomAppBarItem(iconData: Icons.layers),
+          FABBottomAppBarItem(iconData: Icons.settings),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
