@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:smart_dock_mobile/widgets/activity/filter_widget.dart';
 import 'package:smart_dock_mobile/widgets/activity/pie_chart_widget.dart';
 import 'package:smart_dock_mobile/widgets/activity/time_series_chart_widget.dart';
 
@@ -12,11 +13,7 @@ class ActivityScreen extends StatefulWidget {
 class _ActivityScreenState extends State<ActivityScreen> {
 
   Widget _buildTopbar() {
-    return Container(
-      height: 45,
-      color: Colors.white,
-      child: Text('data'),
-    );
+    return FilterWidget();
   }
 
   Widget _buildLineChart() {
