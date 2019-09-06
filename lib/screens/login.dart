@@ -10,9 +10,9 @@ import 'package:smart_dock_mobile/data/validators/email_validator.dart';
 import 'package:smart_dock_mobile/data/validators/password_validator.dart';
 import 'package:smart_dock_mobile/screens/forgot_pwd.dart';
 import 'package:smart_dock_mobile/screens/signup.dart';
-import 'package:smart_dock_mobile/widgets/button_icon_widget.dart';
-import 'package:smart_dock_mobile/widgets/button_widget.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:smart_dock_mobile/widgets/common/button_icon_widget.dart';
+import 'package:smart_dock_mobile/widgets/common/button_widget.dart';
 
 class LoginScreen extends StatefulWidget {
 

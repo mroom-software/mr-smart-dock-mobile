@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_dock_mobile/widgets/button_widget.dart';
+import 'package:smart_dock_mobile/widgets/common/button_widget.dart';
 
 class ActiveSmartDockWidget extends StatefulWidget {
   final String title;

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_dock_mobile/data/validators/name_validator.dart';
 import 'package:smart_dock_mobile/data/validators/password_validator.dart';
-import 'package:smart_dock_mobile/widgets/button_icon_widget.dart';
+import 'package:smart_dock_mobile/widgets/common/button_icon_widget.dart';
 
 class SetupWifiWidget extends StatefulWidget {
 

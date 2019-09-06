@@ -8,8 +8,8 @@ import 'package:smart_dock_mobile/blocs/signup/signup_states.dart';
 import 'package:smart_dock_mobile/data/validators/email_validator.dart';
 import 'package:smart_dock_mobile/data/validators/name_validator.dart';
 import 'package:smart_dock_mobile/data/validators/password_validator.dart';
-import 'package:smart_dock_mobile/widgets/button_widget.dart';
-import 'package:smart_dock_mobile/widgets/combobox_widget.dart';
+import 'package:smart_dock_mobile/widgets/common/button_widget.dart';
+import 'package:smart_dock_mobile/widgets/common/combobox_widget.dart';
 
 
 const String MIN_DATETIME = '1970-01-01';

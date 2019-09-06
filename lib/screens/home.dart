@@ -59,9 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: _buildTitle(context),
         elevation: 0.5,
       ),
-      body: Center(
-        child: _buildPages(context),
-      ),
+      body: _buildPages(context),
       bottomNavigationBar: FABBottomAppBar(
         backgroundColor: Colors.white,
         notchedShape: CircularNotchedRectangle(),
