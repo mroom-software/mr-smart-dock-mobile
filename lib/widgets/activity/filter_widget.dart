@@ -2,29 +2,50 @@
 import 'package:flutter/material.dart';
 
 class FilterWidget extends StatefulWidget {
+  final Function(String value) onCallback;
+
+  const FilterWidget({Key key, this.onCallback}) : super(key: key);
 
   @override
   _FilterWidgetState createState() => _FilterWidgetState();
 }
 
 class _FilterWidgetState extends State<FilterWidget> {
+  String selectedTab = 'D';
+
   Widget _buildCircle(String title) {
     return InkWell(
-      onTap: () => print('touched'),
+      onTap: () {
+        if (widget.onCallback != null) {
+          widget.onCallback(title);
+        }
+
+        setState(() {
+          selectedTab = title;
+        });
+      },
       child: Container(
         width: 36,
         height: 36,
         decoration: new BoxDecoration(
-          color: Colors.grey.shade200,
+          color: (selectedTab == title) ? Theme.of(context).bottomAppBarColor : Colors.grey.shade200,
           shape: BoxShape.circle,
         ),
         child: Center(
           child: Text(
             title,
+            style: TextStyle(
+              color: (selectedTab == title) ? Colors.white : Theme.of(context).primaryColor,
+            ),
           ),
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override

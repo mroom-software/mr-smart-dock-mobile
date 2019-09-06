@@ -13,7 +13,11 @@ class ActivityScreen extends StatefulWidget {
 class _ActivityScreenState extends State<ActivityScreen> {
 
   Widget _buildTopbar() {
-    return FilterWidget();
+    return FilterWidget(
+      onCallback: (value) {
+        print(value);
+      },
+    );
   }
 
   Widget _buildLineChart() {
