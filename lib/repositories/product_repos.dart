@@ -17,6 +17,7 @@ class ProductRepository {
     @required String wpa,
     @required Function onCallback,
   }) async {
+    User user = await db.selectUser();
     await Socket.connect(Config.hostspotIP, 4567, timeout: Duration(seconds: 5)).then((socket) {
       print('Connected to: '
         '${socket.remoteAddress.address}:${socket.remotePort}');
@@ -37,7 +38,7 @@ class ProductRepository {
       Map<String, String> data = new Map();
       data['SSID'] = ssid;
       data['WPA'] = wpa;
-      data['ID'] = (db.selectUser() as User).apiToken;
+      data['ID'] = user.apiToken;
 
       socket.write(jsonEncode(data));
     });
