@@ -35,7 +35,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
         builder: (context, state) {
           switch (_idx) {
             case 0:
-              return SetWeightHeightWidget();
+              return SetWeightHeightWidget(
+                title: 'Weight',
+                desc: 'Your personal information allows us to calculate your water metabolism and recommend a healthy hydration target.',
+                unit: 'kg',
+                onCallback: (value) {
+
+                },
+              );
               break;
             default:
           }
