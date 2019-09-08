@@ -39,6 +39,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               break;
             default:
           }
+
+          return Center(
+            child: CircularProgressIndicator(),
+          );
         },
       ),
     );

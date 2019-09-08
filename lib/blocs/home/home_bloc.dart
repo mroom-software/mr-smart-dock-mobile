@@ -21,5 +21,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         yield HomeNeedUpdateProfile();
       }
     }
+
+    if (event is HomeSkipProfileUpdate) {
+      yield HomeInitial();
+    }
   }
 }
