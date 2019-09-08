@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_dock_mobile/blocs/auth/auth_bloc.dart';
 import 'package:smart_dock_mobile/blocs/auth/auth_states.dart';
+import 'package:smart_dock_mobile/blocs/home/home_bloc.dart';
+import 'package:smart_dock_mobile/blocs/home/home_events.dart';
 import 'package:smart_dock_mobile/blocs/login/login_bloc.dart';
 import 'package:smart_dock_mobile/repositories/user_repos.dart';
 import 'package:smart_dock_mobile/screens/home.dart';
@@ -30,7 +32,14 @@ class _RootState extends State<Root> {
     return BlocBuilder<AuthBloc, AuthenticationState>(
       builder: (context, state) {
         if (state is AuthenticationAuthenticated) {
-          return HomeScreen();
+          return BlocProvider<HomeBloc>(
+            builder: (context) {
+              return HomeBloc(
+                userRepository: widget.userRepository,
+              )..dispatch(HomeStarted());
+            },
+            child: HomeScreen(),
+          );
         }
 
         if (state is AuthenticationUnauthenticated) {

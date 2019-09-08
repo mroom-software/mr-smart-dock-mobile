@@ -4,7 +4,13 @@ class SetWeightHeightWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return null;
+    return Scaffold(
+      body: Center(
+        child: Text(
+          'Text'
+        ),
+      ),
+    );
   }
 
 }

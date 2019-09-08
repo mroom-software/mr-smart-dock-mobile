@@ -29,7 +29,12 @@ class DB {
               FirstName text,
               LastName text,
               Email text,
-              APIToken text
+              APIToken text,
+              Gender text,
+              DOB text,
+              Weight int,
+              Height int,
+              WorkingHours text
               )
           ''');
         },
