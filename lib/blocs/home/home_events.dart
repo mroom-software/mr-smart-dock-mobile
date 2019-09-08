@@ -9,3 +9,8 @@ class HomeStarted extends HomeEvent {
   @override
   String toString() => 'HomeStarted';
 }
+
+class HomeSkipProfileUpdate extends HomeEvent {
+  @override
+  String toString() => 'HomeSkipProfileUpdate';
+}

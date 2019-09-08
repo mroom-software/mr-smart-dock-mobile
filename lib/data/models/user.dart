@@ -8,9 +8,24 @@ class User {
   String lastName;
   String email;
   String apiToken;
+  String gender;
+  String dob;
+  int weight;
+  int height;
+  String workingHours;
 
   
-  User({this.id, this.fullName, this.firstName, this.lastName, @required this.email, this.apiToken });
+  User({this.id,
+   this.fullName,
+   this.firstName, 
+   this.lastName, 
+   @required this.email, 
+   this.apiToken,
+   this.gender,
+   this.dob,
+   this.weight,
+   this.height,
+   this.workingHours});
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
@@ -20,6 +35,11 @@ class User {
       'LastName': lastName,
       'Email': email,
       'APIToken': apiToken,
+      'DOB': dob,
+      'Gender': gender,
+      'Weight': weight,
+      'Height': height,
+      'WorkingHours': workingHours,
     };
     return map;
   }
@@ -31,6 +51,18 @@ class User {
     lastName = map['LastName'] as String;
     email = map['Email'] as String;
     apiToken = map['APIToken'] as String;
+    dob = map['DOB'] as String;
+    gender = map['DOB'] as String;
+    weight = map['Weight'] as int;
+    height = map['Height'] as int;
+    workingHours = map['WorkingHours'] as String;
+  }
+
+  bool isNeedUpdateProfile() {
+    if (weight == 0 || height == 0 || workingHours == "") {
+      return true;
+    }
+    return false;
   }
 
   @override
