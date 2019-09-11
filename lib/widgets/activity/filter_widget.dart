@@ -53,13 +53,13 @@ class _FilterWidgetState extends State<FilterWidget> {
     return Container(
       height: 50,
       decoration: BoxDecoration(
-          boxShadow: <BoxShadow>[
-            BoxShadow(
-                color: Colors.black26,
-                blurRadius: .0,
-                offset: Offset(0.0, 0.25)
-            )
-          ],
+        boxShadow: <BoxShadow>[
+          BoxShadow(
+              color: Colors.black26,
+              blurRadius: .0,
+              offset: Offset(0.0, 0.25)
+          )
+        ],
         color: Colors.white
       ),
       child: Row(
