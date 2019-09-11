@@ -15,6 +15,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   int _idx;
   ProfileBloc _profileBloc;
+  Map data = new Map<String, dynamic>();
 
   @override
   void initState() {
@@ -39,8 +40,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 title: 'Weight',
                 desc: 'Your personal information allows us to calculate your water metabolism and recommend a healthy hydration target.',
                 unit: 'kg',
-                onCallback: (value) {
-
+                onCallback: ({action, value}) {
+                  data['weight'] = value;
+                  setState(() {
+                    _idx = _idx + action;
+                  });
+                },
+              );
+              break;
+            case 1:
+              return SetWeightHeightWidget(
+                title: 'Height',
+                desc: 'Your personal information allows us to calculate your water metabolism and recommend a healthy hydration target.',
+                unit: 'cm',
+                onCallback: ({action, value}) {
+                  data['height'] = value;
+                  setState(() {
+                    _idx = _idx + action;
+                  });
                 },
               );
               break;

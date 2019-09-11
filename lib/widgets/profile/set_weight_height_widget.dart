@@ -9,7 +9,7 @@ class SetWeightHeightWidget extends StatefulWidget {
   final String title;
   final String desc;
   final String unit;
-  final Function(String value) onCallback;
+  final Function({int action, dynamic value}) onCallback;
 
   const SetWeightHeightWidget({Key key, 
     @required this.title, 
@@ -29,6 +29,8 @@ class _SetWeightHeightWidgetState extends State<SetWeightHeightWidget> {
   @override
   void initState() {
     _value = 70;
+    _min = 30;
+    _max = 120;
     super.initState();
   }
 
@@ -45,7 +47,12 @@ class _SetWeightHeightWidgetState extends State<SetWeightHeightWidget> {
         elevation: 0.5,
         leading: (widget.unit == 'kg') ? null : InkWell(
           onTap: () {
-            Navigator.pop(context);
+            if (widget.onCallback != null) {
+              widget.onCallback(
+                action: -1,
+                value: _value,
+              );
+            }
           },
           child: Icon(
             Icons.keyboard_backspace,
@@ -104,9 +111,9 @@ class _SetWeightHeightWidgetState extends State<SetWeightHeightWidget> {
             ),
             Slider(
               value: _value,
-              min: 30.0,
-              max: 120.0,
-              divisions: 90,
+              min: _min,
+              max: _max,
+              divisions: _max.toInt() - _min.toInt(),
               activeColor: Colors.blue,
               inactiveColor: Colors.grey.shade500,
               label: _value.toInt().toString(),
@@ -123,7 +130,14 @@ class _SetWeightHeightWidgetState extends State<SetWeightHeightWidget> {
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: ButtonWidget(
                 title: 'NEXT',
-                onPressed: null,
+                onPressed: () {
+                  if(widget.onCallback != null) {
+                    widget.onCallback(
+                      action: 1,
+                      value: _value,
+                    );
+                  }
+                },
               ),
             ),
           ],
