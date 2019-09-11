@@ -28,14 +28,13 @@ class _SetWeightHeightWidgetState extends State<SetWeightHeightWidget> {
 
   @override
   void initState() {
-    _value = 70;
-    _min = 30;
-    _max = 120;
+    _calculateData();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    _calculateData();
     _homeBloc = BlocProvider.of<HomeBloc>(context);
     return Scaffold(
       appBar: AppBar(
@@ -104,7 +103,7 @@ class _SetWeightHeightWidgetState extends State<SetWeightHeightWidget> {
                   text: '${_value.toInt()} ',
                   style: Theme.of(context).textTheme.title,
                   children: <TextSpan>[
-                    TextSpan(text: 'kg', style: Theme.of(context).textTheme.subtitle),
+                    TextSpan(text: widget.unit, style: Theme.of(context).textTheme.subtitle),
                   ],
                 ),
               ),
@@ -144,5 +143,19 @@ class _SetWeightHeightWidgetState extends State<SetWeightHeightWidget> {
         ),
       ),
     );
+  }
+
+  void _calculateData() {
+    if (widget.unit == 'kg') {
+      _value = 70;
+      _min = 30;
+      _max = 120;
+
+    } else {
+      _value = 170;
+      _min = 100;
+      _max = 200;
+    }
+    
   }
 }

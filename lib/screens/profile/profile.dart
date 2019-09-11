@@ -37,6 +37,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           switch (_idx) {
             case 0:
               return SetWeightHeightWidget(
+                key: Key('Weight'),
                 title: 'Weight',
                 desc: 'Your personal information allows us to calculate your water metabolism and recommend a healthy hydration target.',
                 unit: 'kg',
@@ -50,6 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               break;
             case 1:
               return SetWeightHeightWidget(
+                key: Key('Height'),
                 title: 'Height',
                 desc: 'Your personal information allows us to calculate your water metabolism and recommend a healthy hydration target.',
                 unit: 'cm',
