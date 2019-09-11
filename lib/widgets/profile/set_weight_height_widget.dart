@@ -39,7 +39,7 @@ class _SetWeightHeightWidgetState extends State<SetWeightHeightWidget> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
-          'YOUR PROFILE',
+          'PROFILE',
           style: Theme.of(context).textTheme.headline,
         ),
         elevation: 0.5,
@@ -113,7 +113,6 @@ class _SetWeightHeightWidgetState extends State<SetWeightHeightWidget> {
               max: _max,
               divisions: _max.toInt() - _min.toInt(),
               activeColor: Colors.blue,
-              inactiveColor: Colors.grey.shade500,
               label: _value.toInt().toString(),
               onChanged: (double newValue) {
                 setState(() {

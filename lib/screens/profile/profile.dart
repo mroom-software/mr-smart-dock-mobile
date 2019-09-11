@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_dock_mobile/blocs/profile/profile_bloc.dart';
 import 'package:smart_dock_mobile/blocs/profile/profile_states.dart';
+import 'package:smart_dock_mobile/widgets/profile/set_goal_widget.dart';
 import 'package:smart_dock_mobile/widgets/profile/set_weight_height_widget.dart';
 import 'package:smart_dock_mobile/widgets/profile/set_working_hours_widget.dart';
 
@@ -75,6 +76,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   setState(() {
                     _idx = _idx + action;
                   });
+                },
+              );
+              break;
+
+            case 3:
+              return SetGoalWidget(
+                onCallback: ({action, value}) {
+                  data['goal'] = value;
+                  if (action < 0) {
+                    setState(() {
+                      _idx = _idx + action;
+                    });
+                  }
                 },
               );
               break;
