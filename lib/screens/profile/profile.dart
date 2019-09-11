@@ -4,9 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_dock_mobile/blocs/profile/profile_bloc.dart';
 import 'package:smart_dock_mobile/blocs/profile/profile_states.dart';
 import 'package:smart_dock_mobile/widgets/profile/set_weight_height_widget.dart';
+import 'package:smart_dock_mobile/widgets/profile/set_working_hours_widget.dart';
 
 class ProfileScreen extends StatefulWidget {
-  
+
   @override
   _ProfileScreenState createState() => _ProfileScreenState();
 }
@@ -57,6 +58,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 unit: 'cm',
                 onCallback: ({action, value}) {
                   data['height'] = value;
+                  setState(() {
+                    _idx = _idx + action;
+                  });
+                },
+              );
+              break;
+
+            case 2:
+              return SetWorkingHoursWidget(
+                key: Key('WorkingHours'),
+                title: 'Working Hours',
+                desc: 'Your personal information allows us to calculate your water metabolism and recommend a healthy hydration target.',
+                onCallback: ({action, value}) {
+                  data['working_hours'] = value;
                   setState(() {
                     _idx = _idx + action;
                   });

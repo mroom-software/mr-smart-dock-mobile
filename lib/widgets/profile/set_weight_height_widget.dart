@@ -34,7 +34,6 @@ class _SetWeightHeightWidgetState extends State<SetWeightHeightWidget> {
 
   @override
   Widget build(BuildContext context) {
-    _calculateData();
     _homeBloc = BlocProvider.of<HomeBloc>(context);
     return Scaffold(
       appBar: AppBar(
