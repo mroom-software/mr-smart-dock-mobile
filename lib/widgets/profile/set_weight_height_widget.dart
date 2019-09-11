@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_dock_mobile/blocs/home/home_bloc.dart';
 import 'package:smart_dock_mobile/blocs/home/home_events.dart';
+import 'package:smart_dock_mobile/widgets/common/button_widget.dart';
 
 class SetWeightHeightWidget extends StatefulWidget {
 
@@ -23,6 +24,13 @@ class SetWeightHeightWidget extends StatefulWidget {
 
 class _SetWeightHeightWidgetState extends State<SetWeightHeightWidget> {
   HomeBloc _homeBloc;
+  double _value, _min, _max;
+
+  @override
+  void initState() {
+    _value = 70;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,10 +67,67 @@ class _SetWeightHeightWidgetState extends State<SetWeightHeightWidget> {
           ),
         ] 
       ),
-      body: Column(
-        children: <Widget>[
-          
-        ],
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 20,
+            ),
+            Center(
+              child: Text(
+                widget.title,
+                style: Theme.of(context).textTheme.title,
+              ),
+            ),
+            SizedBox(
+              height: 45,
+            ),
+            Center(
+              child: Text(
+                widget.desc,
+              ),
+            ),
+            SizedBox(
+              height: 60,
+            ),
+            Center(
+              child: RichText(
+                text: TextSpan(
+                  text: '${_value.toInt()} ',
+                  style: Theme.of(context).textTheme.title,
+                  children: <TextSpan>[
+                    TextSpan(text: 'kg', style: Theme.of(context).textTheme.subtitle),
+                  ],
+                ),
+              ),
+            ),
+            Slider(
+              value: _value,
+              min: 30.0,
+              max: 120.0,
+              divisions: 90,
+              activeColor: Colors.blue,
+              inactiveColor: Colors.grey.shade500,
+              label: _value.toInt().toString(),
+              onChanged: (double newValue) {
+                setState(() {
+                  _value = newValue;
+                });
+              },
+            ),
+            SizedBox(
+              height: 40,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: ButtonWidget(
+                title: 'NEXT',
+                onPressed: null,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
