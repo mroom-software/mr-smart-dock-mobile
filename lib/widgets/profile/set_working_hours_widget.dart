@@ -139,7 +139,7 @@ class _SetWorkingHoursWidgetState extends State<SetWorkingHoursWidget> {
                   if(widget.onCallback != null) {
                     widget.onCallback(
                       action: 1,
-                      value: '',
+                      value: _workingTime(),
                     );
                   }
                 },

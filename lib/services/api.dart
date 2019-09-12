@@ -48,6 +48,14 @@ class API {
     return await _dio.get("/user/profile");
   }
 
+  /// Get water goal based on [working hours] of [user]
+  ///
+  /// Response goal of water. 
+  Future<Response> userWaterGoal({String workingHours, String token}) async {
+    _dio.options.headers['Authorization'] = 'Bearer ' + token;
+    return await _dio.post("/user/calculate-water-goal", data: {"WorkingHours": workingHours});
+  }
+
 }
 
 final api = new API();

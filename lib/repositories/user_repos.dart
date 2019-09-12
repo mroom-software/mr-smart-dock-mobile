@@ -107,6 +107,23 @@ class UserRepository extends BaseUserRepository {
     return await authenticate(email: email, password: password);
   }
 
+  /// Get water goal of [user].
+  ///
+  /// return [result] in ml/day
+  Future<int> userWaterGoal(String workingHours) async {
+    String token = await utils.getSecureData('token');
+    var response = await api.userWaterGoal(
+      token: token,
+      workingHours: workingHours, 
+    );
+    if (response.statusCode != 200) {
+      return 0;
+    }
+
+    Map<String, dynamic> map = response.data;
+    return map['Result'];
+  }
+
   /// Select current [user].
   ///
   /// [user] is null if there is no [user] inside database.
@@ -114,6 +131,7 @@ class UserRepository extends BaseUserRepository {
     return await this.db.selectUser();
   }
 
+  /// clean [user] session
   Future<bool> logout() async {
     await utils.deletSecureData('token');
     await this.db.deleteAllUsers();
