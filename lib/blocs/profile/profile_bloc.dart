@@ -13,7 +13,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
 
   @override
   Stream<ProfileState> mapEventToState(ProfileEvent event) async* {
-    
+    if(event is LoadWaterGoal) {
+      int goal = await userRepository.userWaterGoal(event.workingHours);
+      yield ProfileLoadGoalFinish(goal: goal);
+    }
   }
 
 

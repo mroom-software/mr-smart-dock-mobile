@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:smart_dock_mobile/blocs/profile/profile_bloc.dart';
+import 'package:smart_dock_mobile/blocs/profile/profile_events.dart';
 import 'package:smart_dock_mobile/blocs/profile/profile_states.dart';
 import 'package:smart_dock_mobile/widgets/profile/set_goal_widget.dart';
 import 'package:smart_dock_mobile/widgets/profile/set_weight_height_widget.dart';
@@ -81,6 +82,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               break;
 
             case 3:
+              _profileBloc.dispatch(LoadWaterGoal(workingHours: data['working_hours']));
               return SetGoalWidget(
                 onCallback: ({action, value}) {
                   data['goal'] = value;
