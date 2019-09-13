@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:smart_dock_mobile/blocs/home/home_bloc.dart';
+import 'package:smart_dock_mobile/blocs/home/home_events.dart';
 import 'package:smart_dock_mobile/blocs/profile/profile_bloc.dart';
 import 'package:smart_dock_mobile/blocs/profile/profile_events.dart';
 import 'package:smart_dock_mobile/blocs/profile/profile_states.dart';
@@ -18,6 +20,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   int _idx;
   ProfileBloc _profileBloc;
+  HomeBloc _homeBloc;
+
   Map data = new Map<String, dynamic>();
 
   @override
@@ -29,9 +33,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     _profileBloc = BlocProvider.of<ProfileBloc>(context);
+    _homeBloc = BlocProvider.of<HomeBloc>(context);
 
     return BlocListener<ProfileBloc, ProfileState>(
       listener: (context, state) {
+        if (state is ProfileFinish) {
+          _homeBloc.dispatch(HomeSkipProfileUpdate());
+        }
 
       },
       child: BlocBuilder<ProfileBloc, ProfileState>(
@@ -90,6 +98,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     setState(() {
                       _idx = _idx + action;
                     });
+                  } else {
+                    _profileBloc.dispatch(FinishButtonPressed(
+                      workingHours: data['working_hours'],
+                      weight: data['weight'].round(),
+                      height: data['height'].round(),
+                      waterGoal: data['goal'].round(),
+                    ));
                   }
                 },
               );

@@ -34,7 +34,8 @@ class DB {
               DOB text,
               Weight int,
               Height int,
-              WorkingHours text
+              WorkingHours text,
+              WaterGoal int
               )
           ''');
         },

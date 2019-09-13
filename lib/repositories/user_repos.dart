@@ -124,6 +124,29 @@ class UserRepository extends BaseUserRepository {
     return map['Result'];
   }
 
+  /// Update profile of [user].
+  ///
+  /// return new instance of [user]
+  Future<User> updateUserProfile({String workingHours, int weight, int height, int goal}) async {
+    String token = await utils.getSecureData('token');
+    var response = await api.updateUserProfile(
+      token: token,
+      workingHours: workingHours, 
+      weight: weight,
+      height: height,
+      goal: goal,
+    );
+    if (response.statusCode != 200) {
+      return null;
+    }
+
+    Map<String, dynamic> map = response.data;
+    User user = User.fromMap(map['Result']);
+    this.db.updateUser(user);
+
+    return user;
+  }
+
   /// Select current [user].
   ///
   /// [user] is null if there is no [user] inside database.

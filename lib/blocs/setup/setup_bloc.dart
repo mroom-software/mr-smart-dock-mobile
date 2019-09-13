@@ -22,13 +22,18 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
           onCallback: (error) {
             if (error != null) {
               throw new Exception(error.toString());
-            }
-          }
+            } 
+          },
+          setupBloc: this,
         );
         
-      } catch (error) {
-        yield SetupFailure(error: error.toString());
+      } on Exception catch(error) {
+        yield SetupFailure(error: error.toString());        
       }
+    }
+
+    if (event is SetupWebsocketDataReceived) {
+      yield SetupSuccess();
     }
   }
 
