@@ -15,3 +15,8 @@ class SetupWifiPressed extends SetupEvent {
   String toString() => 'SetupWifiPressed { ssid: $ssid, wpa: $wpa }';
 
 }
+
+class SetupWebsocketDataReceived extends SetupEvent {
+  @override
+  String toString() => 'SetupWebsocketDataReceived ';
+}
