@@ -33,3 +33,8 @@ class ProfileFailure extends ProfileState {
   @override
   String toString() => 'ProfileFailure { error: $error }';
 }
+
+class ProfileFinish extends ProfileState {
+  @override
+  String toString() => 'ProfileFinish';
+}

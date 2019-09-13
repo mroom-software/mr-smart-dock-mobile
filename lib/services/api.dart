@@ -56,6 +56,14 @@ class API {
     return await _dio.post("/user/calculate-water-goal", data: {"WorkingHours": workingHours});
   }
 
+  /// Update [working hours], [weight], [height], [water goal] of [user]
+  ///
+  /// Response new [user] instance. 
+  Future<Response> updateUserProfile({String workingHours, int weight, int height, int goal, String token}) async {
+    _dio.options.headers['Authorization'] = 'Bearer ' + token;
+    return await _dio.put("/user/profile", data: {"WorkingHours": workingHours, "Goal": goal, "Weight": weight, "Height": height});
+  }
+
 }
 
 final api = new API();

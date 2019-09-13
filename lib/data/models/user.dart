@@ -13,6 +13,7 @@ class User {
   int weight;
   int height;
   String workingHours;
+  int waterGoal;
 
   
   User({this.id,
@@ -25,7 +26,8 @@ class User {
    this.dob,
    this.weight,
    this.height,
-   this.workingHours});
+   this.workingHours,
+   this.waterGoal,});
 
   Map<String, dynamic> toMap() {
     var map = <String, dynamic>{
@@ -40,6 +42,7 @@ class User {
       'Weight': weight,
       'Height': height,
       'WorkingHours': workingHours,
+      'WaterGoal': waterGoal,
     };
     return map;
   }
@@ -56,6 +59,7 @@ class User {
     weight = map['Weight'] as int;
     height = map['Height'] as int;
     workingHours = map['WorkingHours'] as String;
+    waterGoal = map['WaterGoal'] as int;
   }
 
   bool isNeedUpdateProfile() {

@@ -15,3 +15,19 @@ class LoadWaterGoal extends ProfileEvent {
   String toString() => 'LoadWaterGoal { workingHours: $workingHours }';
 
 }
+
+class FinishButtonPressed extends ProfileEvent {
+  final String workingHours;
+  final int weight;
+  final int height;
+  final int waterGoal; 
+
+  FinishButtonPressed({
+    @required this.workingHours,
+    @required this.weight,
+    @required this.height,
+    @required this.waterGoal}) : super([workingHours, weight, height, waterGoal]);
+  
+  @override
+  String toString() => 'FinishButtonPressed { workingHours: $workingHours, weight: $weight, height: $height, waterGoal: $waterGoal }';
+}
