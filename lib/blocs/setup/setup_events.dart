@@ -20,3 +20,8 @@ class SetupWebsocketDataReceived extends SetupEvent {
   @override
   String toString() => 'SetupWebsocketDataReceived ';
 }
+
+class SetupWebsocketDataNotReceived extends SetupEvent {
+  @override
+  String toString() => 'SetupWebsocketDataNotReceived ';
+}

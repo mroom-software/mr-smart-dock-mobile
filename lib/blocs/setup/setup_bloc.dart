@@ -35,6 +35,10 @@ class SetupBloc extends Bloc<SetupEvent, SetupState> {
     if (event is SetupWebsocketDataReceived) {
       yield SetupSuccess();
     }
+
+    if (event is SetupWebsocketDataNotReceived) {
+      yield SetupFailure(error: "Please put your cup above the dock");
+    }
   }
 
   

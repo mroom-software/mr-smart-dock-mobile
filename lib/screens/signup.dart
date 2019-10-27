@@ -346,7 +346,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   void _btnSignupPressed() {
     if (_validateAndSave()) {
-      _signupBloc.dispatch(SignupButtonPressed(
+      _signupBloc.add(SignupButtonPressed(
         firstName: _firstName,
         lastName: _lastName,
         gender: _gender,

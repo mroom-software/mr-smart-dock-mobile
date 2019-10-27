@@ -64,7 +64,7 @@ class _SetGoalWidgetState extends State<SetGoalWidget> {
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: InkWell(
                   onTap: () {
-                    _homeBloc.dispatch(HomeSkipProfileUpdate());
+                    _homeBloc.add(HomeSkipProfileUpdate());
                   },
                   child: Icon(
                     Icons.close,

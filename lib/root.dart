@@ -36,7 +36,7 @@ class _RootState extends State<Root> {
             builder: (context) {
               return HomeBloc(
                 userRepository: widget.userRepository,
-              )..dispatch(HomeStarted());
+              )..add(HomeStarted());
             },
             child: HomeScreen(),
           );
