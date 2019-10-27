@@ -36,7 +36,7 @@ void main() {
     await tester.pumpWidget(makeWidgetTestable(child: screen, loginBloc: _loginBloc));
 
     // login failed
-    _loginBloc.dispatch(LoginButtonPressed(
+    _loginBloc.add(LoginButtonPressed(
       email: 'trongdth@gmail.com',
       password: '123456'
     ));
@@ -47,12 +47,14 @@ void main() {
 
     // login success
     mockUserRepository.user = User(email: 'trongdth@gmail.com');
-    _loginBloc.dispatch(LoginButtonPressed(
+    _loginBloc.add(LoginButtonPressed(
       email: 'trongdth@gmail.com',
       password: '123456'
     ));
 
     await tester.pump();
     expect(find.byKey(loginKey), findsNothing);
+
+    _loginBloc.close();
   });
 }
