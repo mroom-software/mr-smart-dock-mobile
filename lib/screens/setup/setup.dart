@@ -79,7 +79,7 @@ class _SetupScreenState extends State<SetupScreen> {
                 title: 'WIFI',
                 description: 'Input your wifi configuration to finish process',
                 onCallback: (ssid, wpa) {
-                  _setupBloc.dispatch(
+                  _setupBloc.add(
                     SetupWifiPressed(
                       ssid: ssid,
                       wpa: wpa,

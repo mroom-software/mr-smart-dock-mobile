@@ -5,6 +5,7 @@ import 'package:smart_dock_mobile/blocs/setup/setup_bloc.dart';
 import 'package:smart_dock_mobile/blocs/setup/setup_states.dart';
 import 'package:smart_dock_mobile/data/validators/name_validator.dart';
 import 'package:smart_dock_mobile/data/validators/password_validator.dart';
+import 'package:smart_dock_mobile/helpers/utils.dart';
 import 'package:smart_dock_mobile/widgets/common/button_icon_widget.dart';
 
 class SetupWifiWidget extends StatefulWidget {
@@ -25,6 +26,7 @@ class SetupWifiWidget extends StatefulWidget {
 class _SetupWifiWidgetState extends State<SetupWifiWidget> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<ScaffoldState> _scaffoldstate = GlobalKey<ScaffoldState>();
   String _ssid, _wpa;
   bool _isShowPwd;
 
@@ -41,11 +43,14 @@ class _SetupWifiWidgetState extends State<SetupWifiWidget> {
       listener: (context, state) {
         if (state is SetupSuccess) {
           Navigator.pop(context);
+        } else if(state is SetupFailure) {
+          _scaffoldstate.currentState.showSnackBar(SnackBar(content: Text(state.error)));
         }
       },
       child: BlocBuilder<SetupBloc, SetupState>(
         builder: (context, state) {
           return Scaffold(
+            key: _scaffoldstate,
             appBar: AppBar(
               backgroundColor: Colors.white,
               title: Text(

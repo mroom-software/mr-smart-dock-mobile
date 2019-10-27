@@ -34,6 +34,6 @@ class _SettingScreenState extends State<SettingScreen> {
   }
 
   void _handleLogout() {
-    _authBloc.dispatch(LoggedOut());
+    _authBloc.add(LoggedOut());
   }
 }

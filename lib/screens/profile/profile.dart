@@ -38,7 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return BlocListener<ProfileBloc, ProfileState>(
       listener: (context, state) {
         if (state is ProfileFinish) {
-          _homeBloc.dispatch(HomeSkipProfileUpdate());
+          _homeBloc.add(HomeSkipProfileUpdate());
         }
 
       },
@@ -90,7 +90,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               break;
 
             case 3:
-              _profileBloc.dispatch(LoadWaterGoal(workingHours: data['working_hours']));
+              _profileBloc.add(LoadWaterGoal(workingHours: data['working_hours']));
               return SetGoalWidget(
                 onCallback: ({action, value}) {
                   data['goal'] = value;
@@ -99,7 +99,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       _idx = _idx + action;
                     });
                   } else {
-                    _profileBloc.dispatch(FinishButtonPressed(
+                    _profileBloc.add(FinishButtonPressed(
                       workingHours: data['working_hours'],
                       weight: data['weight'].round(),
                       height: data['height'].round(),

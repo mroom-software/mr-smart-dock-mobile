@@ -27,7 +27,12 @@ class ProductRepository {
       socket.listen((List<int> event) {
         String message = new String.fromCharCodes(event).trim();
         print('Received: $message');
-        setupBloc.dispatch(SetupWebsocketDataReceived());
+        if (message == 'NO') {
+          setupBloc.add(SetupWebsocketDataNotReceived());
+        } else {
+          setupBloc.add(SetupWebsocketDataReceived());
+        }
+        
       },
       onError: (error) {
         onCallback(error);

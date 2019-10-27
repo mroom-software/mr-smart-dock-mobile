@@ -264,7 +264,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _handleLogin() {
     if(_validateAndSave()) {
-      _loginBloc.dispatch(LoginButtonPressed(
+      _loginBloc.add(LoginButtonPressed(
         email: _email,
         password: _password,
       ));
@@ -275,7 +275,7 @@ class _LoginScreenState extends State<LoginScreen> {
     try {
       GoogleSignInAccount result = await _googleSignIn.signIn();
       var auth = await result.authentication;
-      _loginBloc.dispatch(
+      _loginBloc.add(
         LoginGoogleButtonPressed(
           fullName: result.displayName,
           email: result.email,

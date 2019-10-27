@@ -23,5 +23,6 @@ void handleConnection(Socket client){
     print('done');
   });
 
-  client.write('ok');
+  client.write('NO');
+  // client.write('NO');
 }

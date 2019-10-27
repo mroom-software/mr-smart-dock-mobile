@@ -36,7 +36,7 @@ void main() async {
     BlocProvider<AuthBloc>(
       builder: (context) {
         return AuthBloc(userRepository: UserRepository(db: db, api: api))
-              ..dispatch(AppStarted());
+              ..add(AppStarted());
       },
       child: Routes(),
     )

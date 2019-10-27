@@ -28,7 +28,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
         if (user != null) {
           yield LoginSuccess();
-          authBloc.dispatch(LoggedIn(user: user));
+          authBloc.add(LoggedIn(user: user));
         } else {
           yield LoginFailure(error: 'Login Failed');
         }
@@ -52,7 +52,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
         if (user != null) {
           yield LoginSuccess();
-          authBloc.dispatch(LoggedIn(user: user));
+          authBloc.add(LoggedIn(user: user));
         } else {
           yield LoginFailure(error: 'Login Failed');
         }
